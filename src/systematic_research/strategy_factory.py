@@ -1,4 +1,4 @@
-"""StrategyQuant-style product-level strategy factory and portfolio search."""
+"""Product-level strategy factory and systematic portfolio search."""
 
 from __future__ import annotations
 
