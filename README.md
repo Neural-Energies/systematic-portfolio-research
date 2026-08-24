@@ -4,6 +4,17 @@ An interview-focused Python research repository for systematic futures portfolio
 
 > **Research status:** The highlighted portfolio passed the predefined research audit, including one sealed holdout evaluation. Results are hypothetical and support paper trading and contract-level execution validation—not immediate live deployment.
 
+## Reviewer quick path
+
+This repository is intentionally curated for a short technical review:
+
+1. **Results:** Read the [results and limitations](docs/RESULTS_AND_LIMITATIONS.md) for the performance evidence and caveats.
+2. **Method:** Review the [research method](docs/RESEARCH_METHOD.md), including timing, holdout, and audit controls.
+3. **Implementation:** Inspect the [strategy factory](src/systematic_research/daily_session_factory.py), [sealed evaluator](src/systematic_research/daily_session_sealed.py), and their [tests](tests/test_daily_session_factory.py).
+4. **Evidence:** Open the [selected candidate package](saved_strategies/BEST_STRATEGIES/tier_a_sealed_validated/stable_daily_session_2026-08-23) or its [audit report](saved_strategies/BEST_STRATEGIES/tier_a_sealed_validated/stable_daily_session_2026-08-23/AUDIT_REPORT.html).
+
+No GitHub setup is required to review these materials. A reviewer can use the links above directly in a browser.
+
 ## Highlighted result
 
 The selected candidate is a three-rule, cross-market session-reversal portfolio using crude oil, Japanese yen, and natural gas futures signals. Parameters and weights were frozen before the sealed year was accessed.
