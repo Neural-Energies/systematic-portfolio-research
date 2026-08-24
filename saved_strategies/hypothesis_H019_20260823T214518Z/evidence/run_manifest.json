@@ -1,0 +1,69 @@
+{
+  "hypothesis_id": "H019",
+  "research_stage": "development_only_chained_walk_forward",
+  "sealed_year_accessed": false,
+  "unique_hypothesis_count": 1,
+  "parameter_sensitivity_variants": 16,
+  "timeframes_minutes": [
+    15,
+    30,
+    60,
+    240
+  ],
+  "base_one_way_cost_bps": 1.0,
+  "portfolio": {
+    "observations": 384,
+    "start": "2024-02-21",
+    "end": "2025-08-15",
+    "total_return": -0.12966884237808884,
+    "annualized_return": -0.08332520994762872,
+    "annualized_volatility": 0.12492679665270194,
+    "sharpe": -0.6669922881259325,
+    "maximum_drawdown": -0.14170382217801447,
+    "win_days": 0.3828125,
+    "win_months": 0.42105263157894735,
+    "win_quarters": 0.42857142857142855,
+    "win_years": 0.0,
+    "positive_days": 147,
+    "positive_months": 8,
+    "positive_quarters": 3,
+    "positive_years": 0,
+    "months": 19,
+    "quarters": 7,
+    "years": 2,
+    "win_weeks": 0.41025641025641024,
+    "positive_weeks": 32,
+    "weeks": 78
+  },
+  "bootstrap": {
+    "annualized_return_p05": -0.20402017136839035,
+    "annualized_return_p50": -0.06434016271657028,
+    "annualized_return_p95": 0.07145170565668217,
+    "sharpe_p05": -1.5990902674490317,
+    "sharpe_p50": -0.5165197869374422,
+    "sharpe_p95": 0.5930201728202956
+  },
+  "audit_gates": {
+    "selection_available_all_evaluation_folds": true,
+    "gross_expectancy_positive": true,
+    "one_bp_expectancy_positive": false,
+    "walk_forward_sharpe_at_least_2": false,
+    "winning_weeks_or_months_at_least_70_percent": false,
+    "all_evaluation_folds_positive": false,
+    "bootstrap_fifth_percentile_sharpe_positive": false
+  },
+  "audit_passed": false,
+  "market_sources": [
+    "data/processed/databento_research/development_minute_returns/symbol=6E/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=6J/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=CL/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ES/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=GC/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=HG/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=NG/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=NKD/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ZC/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ZN/returns.parquet"
+  ],
+  "elapsed_seconds": 41.16933639999479
+}

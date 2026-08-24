@@ -1,0 +1,78 @@
+{
+  "research_stage": "development_only_walk_forward",
+  "sealed_year_accessed": false,
+  "research_pass": 3,
+  "unique_hypotheses": [
+    "H012",
+    "H013",
+    "H014",
+    "H015",
+    "H016"
+  ],
+  "raw_parameter_configurations": 220,
+  "parameter_configurations_are_not_counted_as_unique_ideas": true,
+  "base_one_way_cost_bps": 3.5,
+  "timeframes_minutes": [
+    15,
+    30,
+    60,
+    240
+  ],
+  "walk_forward_folds": 4,
+  "evaluation_folds": 3,
+  "portfolio": {
+    "observations": 384,
+    "start": "2024-02-21",
+    "end": "2025-08-15",
+    "total_return": -0.23241853056348472,
+    "annualized_return": -0.16873166959575944,
+    "annualized_volatility": 0.09820521515901029,
+    "sharpe": -1.7181538609996962,
+    "maximum_drawdown": -0.28341011382763426,
+    "win_days": 0.46875,
+    "win_months": 0.21052631578947367,
+    "win_quarters": 0.42857142857142855,
+    "win_years": 0.0,
+    "positive_days": 180,
+    "positive_months": 4,
+    "positive_quarters": 3,
+    "positive_years": 0,
+    "months": 19,
+    "quarters": 7,
+    "years": 2,
+    "win_weeks": 0.358974358974359,
+    "positive_weeks": 28,
+    "weeks": 78
+  },
+  "bootstrap": {
+    "annualized_return_p05": -0.32142595423059134,
+    "annualized_return_p50": -0.194880769353939,
+    "annualized_return_p95": -0.060780619977820284,
+    "sharpe_p05": -3.550187796376411,
+    "sharpe_p50": -2.0082875721314126,
+    "sharpe_p95": -0.548164600061365
+  },
+  "audit_gates": {
+    "walk_forward_sharpe_at_least_2": false,
+    "winning_weeks_or_months_at_least_70_percent": false,
+    "every_evaluation_fold_positive": false,
+    "sharpe_at_3_5_bps_at_least_1_5": false,
+    "bootstrap_fifth_percentile_sharpe_positive": false,
+    "sharpe_after_removing_best_three_days_positive": false,
+    "at_least_two_unique_hypotheses_selected_each_fold": true
+  },
+  "audit_passed": false,
+  "development_inputs": [
+    "data/processed/databento_research/development_minute_returns/symbol=6E/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=6J/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=CL/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ES/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=GC/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=HG/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=NG/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=NKD/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ZC/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ZN/returns.parquet"
+  ],
+  "elapsed_seconds": 12.37307950000104
+}

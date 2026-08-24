@@ -1,0 +1,7 @@
+{
+  "hypothesis_id": "H022",
+  "symbol": "CL",
+  "response_minutes": 15,
+  "hold_minutes": 60,
+  "response_threshold": 1.0
+}

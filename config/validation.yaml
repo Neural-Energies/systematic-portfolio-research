@@ -1,0 +1,8 @@
+temporal_validation:
+  holdout_months: 12
+  minimum_holdout_months: 6
+  embargo_days: 5
+  split_method: anchored_latest_session
+  access_policy: development_only_by_default
+  sequential_evaluation: true
+

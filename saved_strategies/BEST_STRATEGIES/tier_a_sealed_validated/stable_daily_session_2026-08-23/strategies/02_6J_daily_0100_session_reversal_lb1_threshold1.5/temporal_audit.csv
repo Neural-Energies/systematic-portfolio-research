@@ -1,0 +1,2 @@
+name,symbol,family,lookback_sessions,entry_threshold,full_sharpe,positive_folds,worst_fold_sharpe,fold_1_sharpe,fold_2_sharpe,fold_3_sharpe,fold_4_sharpe
+daily_0100,6J,session_reversal,1,1.5,1.5405794980662633,4,0.1122070805030262,0.1122070805030262,1.224126472443242,2.1596125429959243,2.451098208638903

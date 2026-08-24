@@ -1,0 +1,80 @@
+portfolio_design:
+  status: design_only_no_holdout_no_backtest
+  starting_capital_usd: 1000000
+  data_frequency: 1_minute_ohlcv
+  style: systematic_long_short
+  maximum_holding_sessions: 5
+  continuously_invested:
+    enabled: true
+    definition: maintain_long_and_short_gross_exposure_not_every_instrument
+    emergency_deleveraging_allowed: true
+  universe:
+    initial: [CL, HG, NQ, ZN, ZT]
+    pending_older_development_history: [ES, GC]
+    excluded_invalid_data: [6J]
+  temporal_controls:
+    development_only: true
+    sealed_holdout_access: false
+    signal_execution_delay_minutes: 1
+    expanding_walk_forward: true
+    embargo_sessions: 5
+  risk:
+    target_annualized_volatility: 0.10
+    normal_gross_exposure: 1.0
+    maximum_gross_leverage: 2.0
+    net_exposure_min: -0.25
+    net_exposure_max: 0.25
+    maximum_instrument_risk_contribution: 0.30
+    maximum_asset_class_risk_contribution: 0.50
+    sizing_basis: volatility_and_covariance
+    drawdown_controls:
+      - {drawdown: 0.075, action: reduce_target_risk}
+      - {drawdown: 0.10, action: materially_reduce_exposure}
+      - {drawdown: 0.15, action: emergency_minimum_risk_posture}
+  covariance:
+    method: exponentially_weighted_with_shrinkage
+    lookback_sessions: 60
+    half_life_sessions: 20
+  costs:
+    commissions_required: true
+    spread_required: true
+    slippage_required: true
+    roll_costs_required: true
+    calibration_status: conservative_placeholders_pending_review
+  correlation_policy:
+    preserve_correlated_instruments: true
+    uses: [relative_value, spreads, lead_lag, residual_momentum, dynamic_hedging, correlation_regimes]
+  regime_engine:
+    ensemble: true
+    hard_labels_for_allocation: false
+    probability_weighted: true
+    uncertain_classification_action: reduce_regime_reliance
+    markov_states: [low_volatility_trend, high_volatility_trend, mean_reverting_choppy, stress_transition]
+    observable_inputs:
+      - atr_percentile
+      - realized_volatility_percentile
+      - volatility_acceleration
+      - trend_efficiency
+      - moving_average_structure
+      - range_expansion
+      - correlation_concentration
+      - liquidity_and_tape_pace_proxies
+    estimation: expanding_walk_forward
+  relationship_discovery:
+    methods:
+      - lagged_cross_correlations
+      - rolling_hedge_ratios_and_residuals
+      - economically_justified_cointegration
+      - lead_lag_stability
+      - relative_momentum
+      - correlation_breakdown_and_convergence
+      - conditional_relationships_by_regime
+      - partial_correlation_with_broad_factor_controls
+    multiple_testing_controls_required: true
+    walk_forward_stability_required: true
+  build_sequence:
+    - regime_engine
+    - continuously_invested_trend_baseline
+    - short_term_reversal
+    - relative_value
+    - lead_lag

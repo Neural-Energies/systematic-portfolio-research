@@ -1,0 +1,8 @@
+{
+  "hypothesis_id": "H021",
+  "symbol": "ES",
+  "timeframe_minutes": 60.0,
+  "training_sessions": 40.0,
+  "ridge_penalty": 100.0,
+  "forecast_threshold": 0.1
+}

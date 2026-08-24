@@ -1,0 +1,9 @@
+{
+  "hypothesis_id": "H020",
+  "symbol": "GC",
+  "hold_sessions": 5,
+  "threshold": 1.0,
+  "direction": "follow managed-money cross-sectional rank",
+  "session_rule": "trade open to close; flat overnight",
+  "one_way_cost_bps": 1.0
+}

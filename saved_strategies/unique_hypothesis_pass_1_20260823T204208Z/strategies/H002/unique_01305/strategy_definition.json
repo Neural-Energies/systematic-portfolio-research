@@ -1,0 +1,10 @@
+{
+  "name": "unique_01305",
+  "hypothesis_id": "H002",
+  "symbol": "NKD",
+  "timeframe_minutes": 30,
+  "lookback": 5,
+  "threshold": 0.5,
+  "direction": -1,
+  "leader": NaN
+}

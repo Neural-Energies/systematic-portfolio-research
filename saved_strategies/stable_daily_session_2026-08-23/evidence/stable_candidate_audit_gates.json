@@ -1,0 +1,12 @@
+{
+  "full_development_sharpe_at_least_2": true,
+  "every_chronological_fold_positive": true,
+  "winning_months_at_least_60_percent": true,
+  "winning_quarters_at_least_50_percent": true,
+  "sharpe_above_1_5_at_3_5_bps": true,
+  "beats_sp500_in_confirmation": true,
+  "bootstrap_fifth_percentile_sharpe_positive": true,
+  "vectorbt_daily_return_difference_below_5e_5": true,
+  "at_least_two_positive_parameter_neighbors_each": true,
+  "maximum_strategy_weight_at_most_50_percent": true
+}

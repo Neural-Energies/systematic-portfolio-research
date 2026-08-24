@@ -1,0 +1,20 @@
+preprocessing:
+  minimum_history_sessions: 120
+  winsorization:
+    lower_quantile: 0.01
+    upper_quantile: 0.99
+    point_in_time: true
+  scaling:
+    method: expanding_median_iqr
+    point_in_time: true
+  missing_values:
+    warmup: exclude_row_until_available
+    mature_period: no_imputation
+  redundancy:
+    exact_feature_drops:
+      reversal_1s: log_return_1s
+      open_to_previous_close: overnight_gap_fraction
+    cross_instrument_degenerate_drops:
+      intraday_return_median: return_sign_imbalance
+    review_absolute_correlation: 0.95
+    automatic_correlation_drop: false

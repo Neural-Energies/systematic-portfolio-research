@@ -1,0 +1,17 @@
+name,timeframe_minutes,training_sessions,residual_threshold
+h019_015m_train20_threshold0p75,15,20,0.75
+h019_015m_train20_threshold1p25,15,20,1.25
+h019_015m_train40_threshold0p75,15,40,0.75
+h019_015m_train40_threshold1p25,15,40,1.25
+h019_030m_train20_threshold0p75,30,20,0.75
+h019_030m_train20_threshold1p25,30,20,1.25
+h019_030m_train40_threshold0p75,30,40,0.75
+h019_030m_train40_threshold1p25,30,40,1.25
+h019_060m_train20_threshold0p75,60,20,0.75
+h019_060m_train20_threshold1p25,60,20,1.25
+h019_060m_train40_threshold0p75,60,40,0.75
+h019_060m_train40_threshold1p25,60,40,1.25
+h019_240m_train20_threshold0p75,240,20,0.75
+h019_240m_train20_threshold1p25,240,20,1.25
+h019_240m_train40_threshold0p75,240,40,0.75
+h019_240m_train40_threshold1p25,240,40,1.25

@@ -1,0 +1,8 @@
+{
+  "hypothesis_id": "H018",
+  "symbol": "NG",
+  "cross_sectional_threshold": 1.0,
+  "direction": "long high producer hedging pressure; short low",
+  "hold": "next available session open to close",
+  "one_way_cost_bps": 1.0
+}

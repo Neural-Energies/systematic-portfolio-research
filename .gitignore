@@ -1,0 +1,42 @@
+# Python and tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+.hypothesis/
+
+# Research data and generated artifacts
+data/raw/*
+data/interim/*
+data/processed/*
+data/catalog/*
+reports/figures/*
+reports/tear_sheets/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/catalog/.gitkeep
+!reports/figures/.gitkeep
+!reports/tear_sheets/.gitkeep
+
+# Local run scratch space and logs
+work/
+logs/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+config/local*.yaml
+*.db
+*.db-shm
+*.db-wal
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db

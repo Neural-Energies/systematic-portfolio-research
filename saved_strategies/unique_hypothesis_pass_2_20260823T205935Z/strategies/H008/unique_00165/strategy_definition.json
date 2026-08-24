@@ -1,0 +1,10 @@
+{
+  "name": "unique_00165",
+  "hypothesis_id": "H008",
+  "symbol": "ES",
+  "timeframe_minutes": 15,
+  "lookback": 60,
+  "threshold": 0.0,
+  "direction": 1,
+  "leader": NaN
+}

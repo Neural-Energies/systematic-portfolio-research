@@ -1,0 +1,18 @@
+# Replace vendor symbols and contract specifications with your licensed source definitions.
+instruments:
+  - symbol: ES
+    asset_class: futures
+    currency: USD
+    exchange_timezone: America/Chicago
+    price_multiplier: 50
+  - symbol: EURUSD
+    asset_class: fx
+    currency: USD
+    exchange_timezone: UTC
+    price_multiplier: 1
+  - symbol: BTCUSD
+    asset_class: crypto
+    currency: USD
+    exchange_timezone: UTC
+    price_multiplier: 1
+

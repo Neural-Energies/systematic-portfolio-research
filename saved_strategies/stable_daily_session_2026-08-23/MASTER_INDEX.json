@@ -1,0 +1,43 @@
+{
+  "candidate_id": "stable_daily_session_2026-08-23",
+  "archive_layout_version": 1,
+  "source_run_id": "20260823T191836Z",
+  "sealed_run_count": 1,
+  "strategy_count": 3,
+  "strategies": [
+    {
+      "order": 1,
+      "name": "daily_0184",
+      "symbol": "CL",
+      "family": "session_reversal",
+      "folder": "strategies/01_CL_daily_0184_session_reversal_lb20_threshold1.5",
+      "weight": 0.41658842056592593,
+      "sealed_total_return_contribution": 0.388363484370549,
+      "sealed_sharpe": 2.2478040393944747
+    },
+    {
+      "order": 2,
+      "name": "daily_0100",
+      "symbol": "6J",
+      "family": "session_reversal",
+      "folder": "strategies/02_6J_daily_0100_session_reversal_lb1_threshold1.5",
+      "weight": 0.5,
+      "sealed_total_return_contribution": 0.0022461915163571877,
+      "sealed_sharpe": 0.08402605784900653
+    },
+    {
+      "order": 3,
+      "name": "daily_0442",
+      "symbol": "NG",
+      "family": "session_reversal",
+      "folder": "strategies/03_NG_daily_0442_session_reversal_lb40_threshold0.5",
+      "weight": 0.08341157943407404,
+      "sealed_total_return_contribution": 0.11501756706934652,
+      "sealed_sharpe": 1.236626523895253
+    }
+  ],
+  "portfolio_folder": "portfolio",
+  "evidence_folder": "evidence",
+  "source_snapshot_folder": "source_snapshot",
+  "compatibility_note": "Original root artifacts were preserved; organized files are copies."
+}

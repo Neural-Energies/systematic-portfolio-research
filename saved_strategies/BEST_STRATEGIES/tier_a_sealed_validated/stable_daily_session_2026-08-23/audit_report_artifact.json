@@ -1,0 +1,138 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Audited Sealed Portfolio Result",
+    "description": "One-shot sealed evaluation and post-result validation of the frozen daily-session futures portfolio.",
+    "generatedAt": "2026-08-23T20:00:00Z",
+    "sources": [
+      {
+        "id": "post_audit",
+        "label": "Independent post-sealed audit",
+        "path": "post_sealed_audit.json",
+        "query": {"engine": "DuckDB", "language": "sql", "sql": "SELECT * FROM read_json_auto('post_sealed_audit.json')", "description": "Read the independent reproduction, robustness, and data-quality audit.", "tables_used": ["post_sealed_audit.json"]}
+      },
+      {
+        "id": "sealed_calendar",
+        "label": "Sealed calendar-period returns",
+        "path": "sealed_calendar_period_returns.csv",
+        "query": {"engine": "DuckDB", "language": "sql", "sql": "SELECT * FROM read_csv_auto('sealed_calendar_period_returns.csv') WHERE period_type = 'quarter'", "description": "Read quarterly returns from the saved sealed portfolio result.", "tables_used": ["sealed_calendar_period_returns.csv"], "filters": ["period_type = quarter"]}
+      },
+      {
+        "id": "sealed_strategy",
+        "label": "Sealed component returns",
+        "path": "sealed_strategy_returns.parquet",
+        "query": {"engine": "DuckDB", "language": "sql", "sql": "SELECT * FROM read_parquet('sealed_strategy_returns.parquet')", "description": "Read the three frozen VectorBT component return series.", "tables_used": ["sealed_strategy_returns.parquet"]}
+      }
+    ],
+    "cards": [
+      {
+        "id": "return_card",
+        "dataset": "headline",
+        "sourceId": "post_audit",
+        "description": "Compounded return over the 260-session sealed year; S&P comparison is price-only.",
+        "metrics": [
+          {"label": "Sealed total return", "field": "total_return", "format": "percent"},
+          {"label": "S&P 500 price return", "field": "sp500_return", "format": "percent"}
+        ]
+      },
+      {
+        "id": "sharpe_card",
+        "dataset": "headline",
+        "sourceId": "post_audit",
+        "description": "Annualized mean daily return divided by annualized daily volatility.",
+        "metrics": [{"label": "Sealed Sharpe", "field": "sharpe", "format": "number"}]
+      },
+      {
+        "id": "drawdown_card",
+        "dataset": "headline",
+        "sourceId": "post_audit",
+        "description": "Worst peak-to-trough decline in the saved sealed equity curve.",
+        "metrics": [{"label": "Maximum drawdown", "field": "maximum_drawdown", "format": "percent"}]
+      },
+      {
+        "id": "consistency_card",
+        "dataset": "headline",
+        "sourceId": "post_audit",
+        "description": "Share of sealed calendar periods with positive compounded returns.",
+        "metrics": [
+          {"label": "Winning months", "field": "win_months", "format": "percent"},
+          {"label": "Winning quarters", "field": "win_quarters", "format": "percent"}
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "monthly_chart",
+        "title": "Quarterly sealed returns",
+        "subtitle": "Third-quarter 2025 through third-quarter 2026; boundary quarters are partial",
+        "type": "bar",
+        "dataset": "quarterly_returns",
+        "sourceId": "sealed_calendar",
+        "encodings": {
+          "x": {"field": "period", "type": "temporal", "label": "Quarter"},
+          "y": {"field": "return", "type": "quantitative", "format": "percent", "label": "Return"},
+          "tooltip": [
+            {"field": "period", "type": "temporal", "label": "Quarter"},
+            {"field": "return", "type": "quantitative", "format": "percent", "label": "Return"}
+          ]
+        },
+        "valueFormat": "percent",
+        "layout": "full"
+      }
+    ],
+    "tables": [],
+    "blocks": [
+      {"id": "title", "type": "markdown", "body": "# Audited Sealed Portfolio Result", "layout": "full"},
+      {"id": "summary", "type": "markdown", "body": "## Executive Summary\n\n- **The frozen candidate passed its only sealed-year run.** It returned 54.9% with a 2.42 Sharpe and a 5.7% maximum drawdown across 260 sessions from August 21, 2025 through August 21, 2026.\n- **It exceeded the S&P 500 price index by 34.4 percentage points.** The comparable S&P price return was 20.5%; dividends are excluded from that benchmark.\n- **The result survives the most important audit challenges.** Saved component returns reproduce the portfolio exactly, both half-years have Sharpe above 2, and the block-bootstrap fifth-percentile Sharpe is 1.21.\n- **The result is strong enough for paper trading, not immediate live capital.** Crude oil generated most profits, the ten best days explain essentially all net profit, and contract-level fills and roll handling still need direct validation.", "layout": "full"},
+      {"id": "metrics", "type": "metric-strip", "cardIds": ["return_card", "sharpe_card", "drawdown_card", "consistency_card"], "layout": "full"},
+      {"id": "calendar_heading", "type": "markdown", "body": "## Returns were positive across most calendar periods\n\nTen of thirteen months and four of five quarters were positive. March 2026 was the standout month at +15.5%, while the worst month was June 2026 at -2.4%. The chart also shows that performance was not a smooth monthly drift; large opportunity months matter.", "layout": "full"},
+      {"id": "monthly_block", "type": "chart", "chartId": "monthly_chart", "layout": "full"},
+      {"id": "robustness_heading", "type": "markdown", "body": "## Independent checks confirm the recorded result\n\nThe portfolio return is reproduced exactly from the three saved VectorBT component series, frozen weights, and leverage. Both chronological half-years remain profitable with Sharpe ratios of 2.16 and 2.66. A 5,000-sample, 20-session block bootstrap produces a 1.21 fifth-percentile Sharpe. Removing the single best day still leaves a 2.26 Sharpe; removing the five best days leaves a 1.32 Sharpe.", "layout": "full"},
+      {"id": "components_heading", "type": "markdown", "body": "## Crude oil is the main engine, not a hidden arithmetic error\n\nThe crude-oil 20-session reversal contributed a 38.8% standalone compounded return at its frozen weight, natural gas contributed 11.5%, and yen was nearly flat. Pairwise component correlations stayed between -0.02 and 0.12. The portfolio is complementary, but it is only three rules and its profit concentration must be monitored.", "layout": "full"},
+      {"id": "next_steps", "type": "markdown", "body": "## Recommended Next Steps\n\n1. Run this exact frozen configuration in paper trading with broker-native contract mapping, exchange fees, bid/ask slippage, and margin usage recorded trade by trade.\n2. Add automated alerts for realized volatility above 20%, a rolling 60-session Sharpe below zero, drawdown above 10%, and crude-oil contribution above 75% of cumulative P&L.\n3. Research additional independent sleeves only on a newly designated development window. Do not use this sealed year for selection or parameter changes.\n4. Preserve this result as the permanent one-shot benchmark; any successor must be frozen and tested on genuinely later data.", "layout": "full"},
+      {"id": "questions", "type": "markdown", "body": "## Further Questions\n\n- Do contract-specific executions reproduce the generic-series open and close without roll contamination?\n- Does the 1 bp-per-side assumption cover the actual broker, exchange, and slippage burden for CL, 6J, and NG?\n- Does crude-oil dependence remain acceptable under position limits and margin shocks?", "layout": "full"},
+      {"id": "caveats", "type": "markdown", "body": "## Caveats and Assumptions\n\nThe strategy was chosen from 640 development variants, so development statistics include multiple-testing and selection bias. The internal confirmation slice was part of the stable-selection calculation and is descriptive rather than independent; the sealed year is the true untouched test. The strategy holds only from session open to session close to avoid the unverified contract-roll behavior in the local continuous series. Costs are 1 bp per side, with development stress tested through 3.5 bps. The S&P comparison is price-only, while the hypothetical strategy excludes financing, taxes, margin constraints, and market impact. Sealed volatility rose to 18.2% versus the 10% development target because leverage was fixed rather than refit.", "layout": "full"}
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-23T20:00:00Z",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {"total_return": 0.5492062353136362, "sp500_return": 0.20473551, "sharpe": 2.417930580617676, "maximum_drawdown": -0.05722425448932833, "win_months": 0.7692307692307693, "win_quarters": 0.8}
+      ],
+      "quarterly_returns": [
+        {"period": "2025-09-30", "return": -0.014465643607694312, "period_type": "quarter"},
+        {"period": "2025-12-31", "return": 0.060556647380279216, "period_type": "quarter"},
+        {"period": "2026-03-31", "return": 0.3148557808190835, "period_type": "quarter"},
+        {"period": "2026-06-30", "return": 0.002689139091848647, "period_type": "quarter"},
+        {"period": "2026-09-30", "return": 0.1242403444921163, "period_type": "quarter"}
+      ],
+      "components": [
+        {"strategy": "CL reversal 20 / 1.5", "symbol": "CL", "weight": 0.41658842056592593, "component_return": 0.388363484370549, "sharpe": 2.2478040393944747, "active_days": 34},
+        {"strategy": "NG reversal 40 / 0.5", "symbol": "NG", "weight": 0.08341157943407404, "component_return": 0.11501756706934652, "sharpe": 1.236626523895253, "active_days": 155},
+        {"strategy": "6J reversal 1 / 1.5", "symbol": "6J", "weight": 0.5, "component_return": 0.0022461915163571877, "sharpe": 0.08402605784900653, "active_days": 32}
+      ],
+      "audit_checks": [
+        {"order": 1, "check": "One-shot sealed policy", "status": "PASS", "evidence": "One completed lock; run count 1; no refit or reselection"},
+        {"order": 2, "check": "Portfolio arithmetic", "status": "PASS", "evidence": "Maximum absolute difference from saved components: 0.0"},
+        {"order": 3, "check": "Raw data grain", "status": "PASS", "evidence": "2,588 rows; 10 symbols; zero duplicate symbol-dates"},
+        {"order": 4, "check": "OHLC validity", "status": "PASS", "evidence": "Zero nonfinite, nonpositive, high/low, or timestamp-order violations"},
+        {"order": 5, "check": "Chronological stability", "status": "PASS", "evidence": "First-half Sharpe 2.16; second-half Sharpe 2.66"},
+        {"order": 6, "check": "Block bootstrap", "status": "PASS", "evidence": "5th-percentile Sharpe 1.21 across 5,000 20-session resamples"},
+        {"order": 7, "check": "Single-outlier dependence", "status": "PASS", "evidence": "Sharpe 2.26 after removing the best day"},
+        {"order": 8, "check": "Five-outlier dependence", "status": "PASS WITH CAVEAT", "evidence": "Sharpe 1.32 after removing the five best days"},
+        {"order": 9, "check": "Cost stress", "status": "PASS", "evidence": "Development Sharpe 2.22 at 3.5 bps per side"},
+        {"order": 10, "check": "Benchmark", "status": "PASS", "evidence": "54.9% versus 20.5% S&P 500 price return"}
+      ]
+    }
+  },
+  "sources": [
+    {"id": "post_audit", "label": "Independent post-sealed audit", "path": "post_sealed_audit.json", "query": {"engine": "DuckDB", "language": "sql", "sql": "SELECT * FROM read_json_auto('post_sealed_audit.json')", "tables_used": ["post_sealed_audit.json"]}},
+    {"id": "sealed_calendar", "label": "Sealed calendar-period returns", "path": "sealed_calendar_period_returns.csv", "query": {"engine": "DuckDB", "language": "sql", "sql": "SELECT * FROM read_csv_auto('sealed_calendar_period_returns.csv') WHERE period_type = 'quarter'", "tables_used": ["sealed_calendar_period_returns.csv"]}},
+    {"id": "sealed_strategy", "label": "Sealed component returns", "path": "sealed_strategy_returns.parquet", "query": {"engine": "DuckDB", "language": "sql", "sql": "SELECT * FROM read_parquet('sealed_strategy_returns.parquet')", "tables_used": ["sealed_strategy_returns.parquet"]}}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "unique_00343",
+  "hypothesis_id": "H011",
+  "symbol": "ZN",
+  "timeframe_minutes": 15,
+  "lookback": 8,
+  "threshold": 0.25,
+  "direction": 1,
+  "leader": NaN
+}

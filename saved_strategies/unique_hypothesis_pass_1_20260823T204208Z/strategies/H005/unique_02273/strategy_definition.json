@@ -1,0 +1,10 @@
+{
+  "name": "unique_02273",
+  "hypothesis_id": "H005",
+  "symbol": "ZC",
+  "timeframe_minutes": 240,
+  "lookback": 4,
+  "threshold": 0.5,
+  "direction": -1,
+  "leader": "CL"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "unique_00163",
+  "hypothesis_id": "H015",
+  "symbol": "GC",
+  "timeframe_minutes": 1440,
+  "lookback": 80,
+  "threshold": 0.25,
+  "direction": 2,
+  "leader": NaN
+}

@@ -1,0 +1,17 @@
+research:
+  base_currency: USD
+  timezone: UTC
+  annualization_days: 252
+  random_seed: 42
+  signal_lag_periods: 1
+
+costs:
+  commission_bps: 0.5
+  spread_bps: 1.0
+  slippage_bps: 1.0
+  roll_bps: 1.0
+
+portfolio:
+  target_volatility: 0.10
+  maximum_gross_leverage: 2.0
+  maximum_asset_weight: 0.25

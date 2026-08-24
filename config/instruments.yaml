@@ -1,0 +1,140 @@
+instruments:
+  - root: ES
+    name: E-mini S&P 500
+    asset_class: equity_index
+    exchange: CME
+    currency: USD
+    price_multiplier: 50
+    tick_size: 0.25
+    tick_value: 12.50
+    contract_months: [H, M, U, Z]
+    settlement: cash
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: NQ
+    name: E-mini Nasdaq-100
+    asset_class: equity_index
+    exchange: CME
+    currency: USD
+    price_multiplier: 20
+    tick_size: 0.25
+    tick_value: 5.00
+    contract_months: [H, M, U, Z]
+    settlement: cash
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: CL
+    name: WTI Crude Oil
+    asset_class: energy
+    exchange: NYMEX
+    currency: USD
+    price_multiplier: 1000
+    tick_size: 0.01
+    tick_value: 10.00
+    contract_months: [F, G, H, J, K, M, N, Q, U, V, X, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: GC
+    name: Gold
+    asset_class: precious_metals
+    exchange: COMEX
+    currency: USD
+    price_multiplier: 100
+    tick_size: 0.10
+    tick_value: 10.00
+    contract_months: [G, J, M, Q, V, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: HG
+    name: Copper
+    asset_class: industrial_metals
+    exchange: COMEX
+    currency: USD
+    price_multiplier: 25000
+    tick_size: 0.0005
+    tick_value: 12.50
+    contract_months: [H, K, N, U, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: 6J
+    name: Japanese Yen
+    asset_class: fx
+    exchange: CME
+    currency: USD
+    price_multiplier: 12500000
+    tick_size: 0.0000005
+    tick_value: 6.25
+    contract_months: [H, M, U, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: ZN
+    name: 10-Year Treasury Note
+    asset_class: rates
+    exchange: CBOT
+    currency: USD
+    price_multiplier: 1000
+    tick_size: 0.015625
+    tick_value: 15.625
+    contract_months: [H, M, U, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 7}
+  - root: ZT
+    name: 2-Year Treasury Note
+    asset_class: rates
+    exchange: CBOT
+    currency: USD
+    price_multiplier: 2000
+    tick_size: 0.00390625
+    tick_value: 7.8125
+    contract_months: [H, M, U, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 7}
+  - root: 6E
+    name: Euro FX
+    asset_class: fx
+    exchange: CME
+    currency: USD
+    price_multiplier: 125000
+    tick_size: 0.00005
+    tick_value: 6.25
+    contract_months: [H, M, U, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: NG
+    name: Henry Hub Natural Gas
+    asset_class: energy
+    exchange: NYMEX
+    currency: USD
+    price_multiplier: 10000
+    tick_size: 0.001
+    tick_value: 10.00
+    contract_months: [F, G, H, J, K, M, N, Q, U, V, X, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: NKD
+    name: Nikkei 225 Dollar
+    asset_class: equity_index
+    exchange: CME
+    currency: USD
+    price_multiplier: 5
+    tick_size: 5
+    tick_value: 25.00
+    contract_months: [H, M, U, Z]
+    settlement: cash
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 5}
+  - root: ZC
+    name: Corn
+    asset_class: agriculture
+    exchange: CBOT
+    currency: USD
+    price_multiplier: 50
+    tick_size: 0.25
+    tick_value: 12.50
+    contract_months: [H, K, N, U, Z]
+    settlement: physical
+    roll: {method: volume_crossover, confirmation_sessions: 2, fallback_business_days: 7}
+
+session:
+  timezone: America/New_York
+  open_time: "18:00"
+  close_time: "17:00"
+  maintenance_break_minutes: 60
+  note: Confirm the Investor/RT timezone; holiday and early-close overrides remain exchange-calendar inputs.

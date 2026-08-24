@@ -1,0 +1,81 @@
+{
+  "hypothesis_id": "H020",
+  "research_stage": "development_only_preregistered_external_signal",
+  "sealed_year_accessed": false,
+  "primary_variant": "hold5_threshold0p5",
+  "base_one_way_cost_bps": 1.0,
+  "signal": "managed-money net-long share; follow high and short low",
+  "information_lag": "Tuesday report assumed available Friday; trade first session after Friday",
+  "portfolio": {
+    "observations": 513,
+    "start": "2023-08-22",
+    "end": "2025-08-15",
+    "total_return": -0.1833193503243239,
+    "annualized_return": -0.08372246323975926,
+    "annualized_volatility": 0.1774450999594227,
+    "sharpe": -0.4718217818294476,
+    "maximum_drawdown": -0.29432968009506866,
+    "win_days": 0.48927875243664715,
+    "win_months": 0.44,
+    "win_quarters": 0.2222222222222222,
+    "win_years": 0.3333333333333333,
+    "positive_days": 251,
+    "positive_months": 11,
+    "positive_quarters": 2,
+    "positive_years": 1,
+    "months": 25,
+    "quarters": 9,
+    "years": 3,
+    "win_weeks": 0.4519230769230769,
+    "positive_weeks": 47,
+    "weeks": 104
+  },
+  "bootstrap": {
+    "annualized_return_p05": -0.26615709897216977,
+    "annualized_return_p50": -0.08034239426090492,
+    "annualized_return_p95": 0.10653102661366809,
+    "sharpe_p05": -1.5150104845900523,
+    "sharpe_p50": -0.4516238935730872,
+    "sharpe_p95": 0.5997163832016693
+  },
+  "audit_gates": {
+    "sharpe_at_least_2": false,
+    "winning_weeks_or_months_at_least_70_percent": false,
+    "at_least_two_positive_chronological_folds": false,
+    "bootstrap_fifth_percentile_sharpe_positive": false
+  },
+  "audit_passed": false,
+  "cftc_sources": [
+    {
+      "year": "2023",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2023.zip",
+      "path": "data/external/cftc/fut_disagg_txt_2023.zip",
+      "sha256": "9fe75dba0256819d476bb0d01f9e8e5ac6ec2c4390f609a7e3259e85796b79ce"
+    },
+    {
+      "year": "2024",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2024.zip",
+      "path": "data/external/cftc/fut_disagg_txt_2024.zip",
+      "sha256": "5e40f60993120d26c116ab347beaf93702f5da60c7bdccbbee43cb3d0a91d01a"
+    },
+    {
+      "year": "2025",
+      "url": "https://www.cftc.gov/files/dea/history/fut_disagg_txt_2025.zip",
+      "path": "data/external/cftc/fut_disagg_txt_2025.zip",
+      "sha256": "17ac2fef1b53303d01e486bbf5768a4e062308a3c34a2970871f3eab89829cbc"
+    }
+  ],
+  "market_sources": [
+    "data/processed/databento_research/development_minute_returns/symbol=6E/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=6J/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=CL/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ES/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=GC/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=HG/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=NG/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=NKD/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ZC/returns.parquet",
+    "data/processed/databento_research/development_minute_returns/symbol=ZN/returns.parquet"
+  ],
+  "elapsed_seconds": 6.240841600010754
+}

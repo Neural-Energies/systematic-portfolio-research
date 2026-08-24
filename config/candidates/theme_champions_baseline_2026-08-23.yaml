@@ -1,0 +1,112 @@
+candidate:
+  id: theme_champions_baseline_2026-08-23
+  name: Theme Champions Equal Weight
+  saved_at: 2026-08-23
+  status: development_baseline_saved_not_frozen_for_holdout
+  live_ready: false
+  holdout_accessed: false
+  purpose: Preserve the first positive multi-theme Databento portfolio before intraday expansion.
+
+data:
+  source: Databento unadjusted volume-rolled front contracts
+  frequency: 1_minute_source_session_strategy
+  development_end: 2025-08-15
+  sealed_holdout_start: 2025-08-21
+  validation_sessions: 226
+
+execution:
+  signal_delay_sessions: 1
+  holding_period: 1_to_5_overlapping_session_cohorts
+  one_way_cost_bps: 3.5
+  allocation: equal_weight_across_six_theme_champions
+  target_annualized_volatility: 0.10
+  maximum_gross_leverage: 2.0
+
+components:
+  - strategy: breakout_03
+    theme: breakout
+    feature: close_percentile_60s
+    secondary_feature: range_percentile_60s
+    secondary_mode: activity
+    direction: 1.0
+    cross_sectional: false
+    hold_sessions: 2
+  - strategy: lead_lag_05
+    theme: lead_lag
+    feature: peer_return_lag1s
+    secondary_feature: leadlag_correlation_60s
+    secondary_mode: signed
+    direction: 1.0
+    cross_sectional: false
+    hold_sessions: 2
+  - strategy: mean_reversion_04
+    theme: mean_reversion
+    feature: momentum_10s
+    direction: contrarian
+    direction_value: -1.0
+    cross_sectional: false
+    hold_sessions: 3
+  - strategy: momentum_09
+    theme: momentum
+    feature: standardized_return_60s
+    direction: 1.0
+    cross_sectional: false
+    hold_sessions: 3
+  - strategy: relative_value_07
+    theme: relative_value
+    feature: price_to_sma_20s
+    direction: cross_sectional_contrarian
+    direction_value: -1.0
+    cross_sectional: true
+    hold_sessions: 2
+  - strategy: trend_06
+    theme: trend
+    feature: ema_gap_10_60s
+    direction: 1.0
+    cross_sectional: false
+    hold_sessions: 3
+
+development_result:
+  annualized_return: 0.04379945662707401
+  annualized_volatility: 0.046222205916403296
+  sharpe: 0.9475847324614706
+  maximum_drawdown: -0.018623147190562017
+  positive_folds: 3
+  total_folds: 4
+  worst_fold_sharpe: -0.22146742537060823
+
+fold_results:
+  - {fold: 1, sessions: 63, annualized_return: 0.017128591038220505, sharpe: 0.5577719225775734}
+  - {fold: 2, sessions: 63, annualized_return: -0.009842257252279135, sharpe: -0.22146742537060823}
+  - {fold: 3, sessions: 63, annualized_return: 0.14533797867622483, sharpe: 2.657857220146508}
+  - {fold: 4, sessions: 37, annualized_return: 0.00765798682708792, sharpe: 0.13807769389429256}
+
+artifacts:
+  strategy_registry:
+    path: data/processed/broad_search/strategy_registry.csv
+    sha256: c9796e8cc008eb7ff9528542ed83d56c0f7a9e60f56f5d46bfa0d19f275e6217
+  strategy_returns:
+    path: data/processed/broad_search/strategy_returns.parquet
+    sha256: 776ca252c77d93941c7961321a1794312ea14ba4c2fda1e7fe98c4ee40c68413
+  portfolio_returns:
+    path: data/processed/broad_search/portfolio_returns.parquet
+    sha256: 18a22750d8775746bc29ff8b41f770e7ac4355456b160b2d25b6950a64198552
+  strategy_summary:
+    path: data/processed/broad_search/strategy_summary.csv
+    sha256: 9832e71fd6708e3f9fb13b51bf80157878afe65839772e97783552340cc723b8
+  portfolio_summary:
+    path: data/processed/broad_search/portfolio_summary.csv
+    sha256: 30c8db8193096113d66cb418e6fee8e4b9df01c995963bd42e5e017b9fff1d8b
+  tear_sheet:
+    path: outputs/broad_strategy_search_tear_sheet.html
+
+promotion_policy:
+  current_role: comparison_baseline_for_future_searches
+  final_freeze_required: true
+  open_holdout_now: false
+  next_priority:
+    - optimize_shared_covariance_computation
+    - expand_mean_reversion_relative_value_lead_lag_to_30_60_240_minutes
+    - add_threshold_volatility_time_of_day_stop_and_exit_variants
+    - compare_complementary_portfolio_weighting_methods
+    - run_cost_stress_tests

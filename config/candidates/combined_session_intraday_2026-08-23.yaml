@@ -1,0 +1,97 @@
+candidate:
+  id: combined_session_intraday_2026-08-23
+  name: Combined Session and Intraday Causal Inverse Volatility
+  saved_at: 2026-08-23
+  status: sealed_holdout_evaluated_once
+  live_ready: false
+  holdout_accessed: true
+development_data:
+  end: 2025-08-15
+  validation_sessions: 226
+  minute_symbols:
+  - CLU6
+  - HGU6
+  - NQU6
+  - ZNU6
+  - ZTU6
+  empty_minute_partitions_excluded:
+  - ESU6
+  - GCU6
+session_sleeve:
+  candidate: theme_champions_baseline_2026-08-23
+  definition: config/candidates/theme_champions_baseline_2026-08-23.yaml
+  allocation: equal_weight_across_six_fixed_components
+  one_way_cost_bps: 3.5
+intraday_sleeve:
+  timeframe_minutes: 240
+  signal: standardized_peer_mean_return_minus_own_return
+  execution_delay: one_completed_bar
+  one_way_cost_bps: 3.5
+  allocation: causal_correlation_adjusted
+  strategies:
+  - name: intraday_0393
+    lookback_bars: 2
+    entry_threshold: 1.0
+    exit_threshold: 0.1
+    maximum_hold_bars: 16
+    volatility_filter: below_median
+    time_rule: all
+    stop_loss: null
+  - name: intraday_0412
+    lookback_bars: 4
+    entry_threshold: 1.0
+    exit_threshold: 0.1
+    maximum_hold_bars: 16
+    volatility_filter: all
+    time_rule: overnight
+    stop_loss: null
+  - name: intraday_0409
+    lookback_bars: 4
+    entry_threshold: 1.0
+    exit_threshold: 0.1
+    maximum_hold_bars: 16
+    volatility_filter: below_median
+    time_rule: all
+    stop_loss: null
+  - name: intraday_0407
+    lookback_bars: 4
+    entry_threshold: 1.25
+    exit_threshold: 0.1
+    maximum_hold_bars: 16
+    volatility_filter: all
+    time_rule: all
+    stop_loss: null
+combined_allocation:
+  method: causal_inverse_volatility
+  lookback_sessions: 120
+  minimum_history_sessions: 40
+  lag_sessions: 1
+  sleeves:
+  - session_sleeve
+  - intraday_sleeve
+development_result:
+  annualized_return: 0.0914372489545002
+  annualized_volatility: 0.044676947253236336
+  sharpe: 2.0466315309373924
+  maximum_drawdown: -0.016802409206146174
+  positive_folds: 3
+  total_folds: 4
+  worst_fold_sharpe: -0.29331234547369595
+holdout_policy:
+  frozen: true
+  may_reselect_after_holdout: false
+  holdout_run_count: 1
+  next_action: no_further_holdout_selection_or_reruns
+sealed_result_artifact: saved_strategies\combined_session_intraday_2026-08-23\sealed_result.json
+sealed_result:
+  observations: 260
+  start: 2025-08-21
+  end: 2026-08-21
+  total_return: -0.02821554816269478
+  annualized_return: -0.026441237401907222
+  annualized_volatility: 0.05103709421489253
+  sharpe: -0.518078817155537
+  maximum_drawdown: -0.0587769252131356
+  win_days: 0.48846153846153845
+  win_months: 0.46153846153846156
+  win_quarters: 0.4

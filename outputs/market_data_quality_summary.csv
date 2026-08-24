@@ -1,0 +1,7 @@
+file,kind,rows,columns,repeated_headers,exact_duplicate_rows,null_cells,symbols,symbol_count,invalid_timestamps,start,end,out_of_order,invalid_numeric_cells,duplicate_symbol_minutes,invalid_ohlc_rows,nonpositive_prices,negative_volume,zero_volume,zero_open_interest_pct,missing_calendar_minutes,nonpositive_tick_volume,crossed_quotes,price_outside_quote,tickvol_max,duplicate_symbol_timestamp,expected_symbol,filename_symbol_match
+CLU6_Export.csv,minute_bars,1353404,8,0,0,0,CLU6,1,0,2022-10-11 18:22:00,2026-08-20 16:53:00,0,0,0.0,0.0,0,0.0,0.0,100.0,12532.0,,,,,,CLU6,True
+ESU6_Export.csv,minute_bars,172745,8,0,0,0,ESU6,1,0,2026-02-19 23:37:00,2026-08-18 20:59:00,0,0,0.0,0.0,0,0.0,0.0,100.0,232.0,,,,,,ESU6,True
+GCU6_Export.csv,minute_bars,1380,8,0,0,0,GCU6,1,0,2026-08-19 18:01:00,2026-08-20 17:00:00,0,0,0.0,0.0,0,0.0,0.0,100.0,0.0,,,,,,GCU6,True
+HGU6_Export.csv,minute_bars,1292944,8,0,0,0,HGU6,1,0,2022-10-11 18:22:00,2026-08-20 17:00:00,0,0,0.0,0.0,0,0.0,0.0,100.0,51782.0,,,,,,HGU6,True
+NQU6_Ticks.txt,ticks,2248160,6,364,726348,0,NQU6,1,0,2023-08-21 16:15:00,2026-08-18 20:59:12,1,0,,,0,,,,,170816.0,0.0,595353.0,1157042.0,1777054.0,NQU6,True
+ZNU6_Export.csv,minute_bars,1277027,8,0,0,0,ZNU6,1,0,2022-10-11 18:22:00,2026-08-20 17:00:00,0,0,0.0,0.0,0,0.0,0.0,100.0,62261.0,,,,,,ZNU6,True

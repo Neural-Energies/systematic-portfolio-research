@@ -1,0 +1,7 @@
+{
+  "hypothesis_id": "H022",
+  "symbol": "NG",
+  "response_minutes": 15,
+  "hold_minutes": 240,
+  "response_threshold": 0.5
+}

@@ -1,0 +1,8 @@
+{
+  "hypothesis_id": "H019-R1",
+  "symbol": "CL",
+  "timeframe_minutes": 30.0,
+  "training_sessions": 40.0,
+  "residual_threshold": 2.25,
+  "confirmation_bars": 2.0
+}

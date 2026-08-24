@@ -1,0 +1,29 @@
+{
+  "candidate_id": "combined_session_intraday_2026-08-23",
+  "evaluation_type": "single_sequential_sealed_holdout",
+  "holdout_accessed": true,
+  "holdout_run_count": 1,
+  "frozen_strategy": "combined_causal_inverse_vol_120d",
+  "development_recalculation_observations": 513,
+  "sealed_result": {
+    "observations": 260,
+    "start": "2025-08-21",
+    "end": "2026-08-21",
+    "total_return": -0.02821554816269478,
+    "annualized_return": -0.026441237401907222,
+    "annualized_volatility": 0.05103709421489253,
+    "sharpe": -0.518078817155537,
+    "maximum_drawdown": -0.0587769252131356,
+    "win_days": 0.48846153846153845,
+    "win_months": 0.46153846153846156,
+    "win_quarters": 0.4,
+    "win_years": 0.0,
+    "positive_days": 127,
+    "positive_months": 6,
+    "positive_quarters": 2,
+    "positive_years": 0,
+    "months": 13,
+    "quarters": 5,
+    "years": 2
+  }
+}

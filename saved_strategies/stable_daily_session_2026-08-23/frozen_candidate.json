@@ -1,0 +1,55 @@
+{
+  "candidate_id": "stable_daily_session_2026-08-23",
+  "status": "frozen_development_candidate_holdout_not_run",
+  "frozen_at_utc": "2026-08-23T19:25:02.981119+00:00",
+  "source_run_id": "20260823T191836Z",
+  "strategy_specs": [
+    {
+      "name": "daily_0184",
+      "symbol": "CL",
+      "family": "session_reversal",
+      "lookback_sessions": 20,
+      "entry_threshold": 1.5
+    },
+    {
+      "name": "daily_0100",
+      "symbol": "6J",
+      "family": "session_reversal",
+      "lookback_sessions": 1,
+      "entry_threshold": 1.5
+    },
+    {
+      "name": "daily_0442",
+      "symbol": "NG",
+      "family": "session_reversal",
+      "lookback_sessions": 40,
+      "entry_threshold": 0.5
+    }
+  ],
+  "weights": {
+    "daily_0184": 0.41658842056592593,
+    "daily_0100": 0.5,
+    "daily_0442": 0.08341157943407404
+  },
+  "fixed_leverage": 1.7381673506066104,
+  "one_way_cost_bps": 1.0,
+  "signal_timing": "session d close",
+  "execution": "session d+1 open to session d+1 close",
+  "overnight_exposure": false,
+  "roll_gap_exposure": false,
+  "selection_rule": "one highest-full-Sharpe strategy per product among strategies with full Sharpe >= 1 and positive Sharpe in every one of four chronological development folds; retain the top six, requiring at least three; capped inverse-volatility weights",
+  "development_audit_passed": true,
+  "development_panel": {
+    "path": "data/processed/databento_research/development_session_panel.parquet",
+    "sha256": "6dc2b51ee1b2610940cee24072439e335ba09cb4e1ac8b7c54f0b5bda1fde4be"
+  },
+  "execution_source": {
+    "path": "src/systematic_research/daily_session_factory.py",
+    "sha256": "49765a844c39aaa88a95d609c70dbf5edfdbef477cd2a4cfdd7ee0b7b18b4db2"
+  },
+  "sealed_policy": {
+    "run_count": 0,
+    "one_attempt_only": true,
+    "sealed_file_not_opened_during_freeze": true
+  }
+}

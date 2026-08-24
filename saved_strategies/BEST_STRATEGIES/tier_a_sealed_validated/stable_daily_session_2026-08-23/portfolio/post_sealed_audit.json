@@ -1,0 +1,49 @@
+{
+  "assessment": "PASS_WITH_CAVEATS",
+  "candidate_id": "stable_daily_session_2026-08-23",
+  "sealed_period": ["2025-08-21", "2026-08-21"],
+  "sealed_run_count": 1,
+  "headline": {
+    "total_return": 0.5492062353136362,
+    "annualized_return": 0.44066109063539194,
+    "annualized_volatility": 0.1822472051794069,
+    "sharpe": 2.417930580617676,
+    "maximum_drawdown": -0.05722425448932833,
+    "win_months": 0.7692307692307693,
+    "win_quarters": 0.8,
+    "sp500_price_return": 0.20473551,
+    "excess_total_return_vs_sp500_price_index": 0.3444707253136362
+  },
+  "independent_checks": {
+    "saved_component_reproduction_max_absolute_difference": 0.0,
+    "first_half_sharpe": 2.16271520913426,
+    "second_half_sharpe": 2.660103482424189,
+    "block_bootstrap_sharpe_p05": 1.2104296047928886,
+    "sharpe_after_removing_best_day": 2.2568671561608515,
+    "sharpe_after_removing_best_five_days": 1.322888761590996,
+    "total_return_after_removing_best_ten_days": -0.006781880038364996,
+    "maximum_pairwise_component_correlation": 0.122336,
+    "active_portfolio_days": 166,
+    "component_trade_sessions": 221
+  },
+  "data_quality": {
+    "rows": 2588,
+    "symbols": 10,
+    "duplicate_symbol_dates": 0,
+    "nonfinite_ohlc_values": 0,
+    "nonpositive_ohlc_values": 0,
+    "high_below_open_or_close": 0,
+    "low_above_open_or_close": 0,
+    "reversed_session_timestamps": 0
+  },
+  "material_caveats": [
+    "The frozen selection rule used the full development sample; its internal confirmation slice is descriptive, not independent out-of-sample evidence. The sealed year is the independent test.",
+    "Crude oil supplied most sealed profit; the yen sleeve was nearly flat. This is a three-rule portfolio, not broad diversification.",
+    "The ten best days account for essentially all sealed profit, although the portfolio remains strong after removing the best day and profitable after removing the best five days.",
+    "Sealed volatility rose to 18.2% versus the 10% development target because leverage was frozen rather than dynamically refit.",
+    "Costs are modeled as 1 bp per side. Development stress remained at 2.22 Sharpe at 3.5 bps per side, but live fills, margin, exchange fees, and market impact require broker-specific validation.",
+    "Local continuous-series files do not contain trustworthy contract identifiers. The strategy therefore avoids overnight exposure and uses only same-session open-to-close returns, but a contract-level execution study remains required before live deployment.",
+    "The S&P comparison uses the FRED daily S&P 500 price index and excludes dividends; the strategy result is also hypothetical and excludes financing and taxes."
+  ],
+  "decision": "The candidate passes the requested research audit and sealed Sharpe target. It is suitable for paper trading and contract-level execution validation, not immediate capital deployment."
+}
