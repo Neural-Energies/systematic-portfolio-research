@@ -1,7 +1,0 @@
-{
-  "hypothesis_id": "H019",
-  "symbol": "ES",
-  "timeframe_minutes": 60.0,
-  "training_sessions": 40.0,
-  "residual_threshold": 0.75
-}

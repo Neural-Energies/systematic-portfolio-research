@@ -1,7 +1,0 @@
-{
-  "hypothesis_id": "H019",
-  "symbol": "GC",
-  "timeframe_minutes": 15.0,
-  "training_sessions": 40.0,
-  "residual_threshold": 1.25
-}

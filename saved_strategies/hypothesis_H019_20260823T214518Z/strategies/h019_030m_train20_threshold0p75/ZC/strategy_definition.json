@@ -1,7 +1,0 @@
-{
-  "hypothesis_id": "H019",
-  "symbol": "ZC",
-  "timeframe_minutes": 30.0,
-  "training_sessions": 20.0,
-  "residual_threshold": 0.75
-}

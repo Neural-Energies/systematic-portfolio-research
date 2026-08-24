@@ -1,9 +1,0 @@
-{
-  "hypothesis_id": "H017",
-  "model": "ridge",
-  "symbol": "GC",
-  "entry_time": "10:00 America/New_York",
-  "exit_time": "16:00 America/New_York",
-  "prediction_hurdle_roundtrip_bps": 2.0,
-  "portfolio_rule": "top four absolute forecasts per day"
-}

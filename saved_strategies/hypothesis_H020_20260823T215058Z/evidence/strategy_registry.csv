@@ -1,7 +1,0 @@
-variant,hold_sessions,threshold
-hold1_threshold0p5,1,0.5
-hold1_threshold1p0,1,1.0
-hold3_threshold0p5,3,0.5
-hold3_threshold1p0,3,1.0
-hold5_threshold0p5,5,0.5
-hold5_threshold1p0,5,1.0

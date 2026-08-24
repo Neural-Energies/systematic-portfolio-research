@@ -1,8 +1,0 @@
-{
-  "hypothesis_id": "H021",
-  "symbol": "GC",
-  "timeframe_minutes": 240.0,
-  "training_sessions": 20.0,
-  "ridge_penalty": 100.0,
-  "forecast_threshold": 0.25
-}

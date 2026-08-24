@@ -1,9 +1,0 @@
-{
-  "walk_forward_sharpe_at_least_2": false,
-  "winning_weeks_or_months_at_least_70_percent": false,
-  "every_evaluation_fold_positive": false,
-  "sharpe_at_3_5_bps_at_least_1_5": false,
-  "bootstrap_fifth_percentile_sharpe_positive": false,
-  "sharpe_after_removing_best_three_days_positive": false,
-  "at_least_two_unique_hypotheses_selected_each_fold": true
-}

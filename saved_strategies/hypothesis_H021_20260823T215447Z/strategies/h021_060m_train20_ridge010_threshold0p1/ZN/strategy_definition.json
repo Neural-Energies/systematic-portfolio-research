@@ -1,8 +1,0 @@
-{
-  "hypothesis_id": "H021",
-  "symbol": "ZN",
-  "timeframe_minutes": 60.0,
-  "training_sessions": 20.0,
-  "ridge_penalty": 10.0,
-  "forecast_threshold": 0.1
-}
