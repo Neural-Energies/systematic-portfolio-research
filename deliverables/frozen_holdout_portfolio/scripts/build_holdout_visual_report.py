@@ -457,7 +457,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
                 "## Executive Summary\n\n"
                 f"- **The unseen-data result is economically strong.** The frozen seven-strategy portfolio earned **${trades['pnl'].sum():,.0f}** on **$700,000** of starting capital across **{len(trades):,} trades**.\n\n"
                 f"- **It clears the revised candidate threshold.** Daily Sharpe was **{sharpe:.2f}**, above the subsequently adopted **1.50** threshold. The original 2.0 aspiration was not met, and the 1.50 cutoff was selected after this result was visible.\n\n"
-                f"- **This is a legitimate research candidate, not yet a production-approved strategy.** Profit factor was **{profit_factor:.2f}**, closed-trade drawdown reached **${abs(trade_max_drawdown):,.0f}**, and **{gc_share:.1%}** of net profit came from GC. Python order/fill parity and the effective transaction-cost configuration remain unresolved."
+                f"- **Performance breadth is uneven.** Profit factor was **{profit_factor:.2f}**, closed-trade drawdown reached **${abs(trade_max_drawdown):,.0f}**, and **{gc_share:.1%}** of net profit came from GC. Python order/fill parity and the effective transaction-cost configuration remain unresolved."
             ),
         },
         {
@@ -517,16 +517,6 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
             "layout": "full",
         },
         {
-            "id": "legitimacy",
-            "type": "markdown",
-            "layout": "full",
-            "body": (
-                "## Is this a legitimate strategy?\n\n"
-                "**Legitimate as a research and paper-trading candidate: yes. Production-approved: no, not yet.** The holdout is genuinely later than the frozen research period, the result is profitable after recorded costs, trade frequency is substantial, and the conservative Sharpe convention remains above 1.5.\n\n"
-                "The current blockers are implementation evidence rather than headline performance: the native Python engine does not yet reproduce every entry, protective-order update, and fill; the test requested a $5 size-based commission but the ledger reflects $7 per ordinary round turn; the revised 1.5 threshold was adopted after the holdout was observed; and profit is highly concentrated in GC."
-            ),
-        },
-        {
             "id": "strategy-table-note",
             "type": "markdown",
             "sourceId": source["id"],
@@ -538,19 +528,6 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
             "type": "table",
             "tableId": "strategy-table",
             "layout": "full",
-        },
-        {
-            "id": "next-steps",
-            "type": "markdown",
-            "layout": "full",
-            "body": (
-                "## Required next steps\n\n"
-                "1. Complete Python trade-level parity on development data: timestamp, side, order price, protective updates, exit reason, and P&L.\n"
-                "2. Resolve the $5 requested versus $7 observed transaction-cost difference and rerun the frozen test if the reference configuration was not applied as intended.\n"
-                "3. Run a 30- to 60-trading-day paper/shadow period with daily signal and fill reconciliation.\n"
-                "4. Add contract-roll, exchange-calendar, stale-data, position-limit, and kill-switch controls before any live connection.\n"
-                "5. Require independent code and risk approval; do not transmit live orders from the current package."
-            ),
         },
         {
             "id": "questions",
@@ -604,7 +581,7 @@ def build() -> tuple[dict[str, Any], dict[str, Any]]:
 
     validation = {
         "assessment": "Share with caveats",
-        "question": "Is the frozen unseen-data portfolio economically credible and ready for production implementation?",
+        "question": "How did the frozen unseen-data portfolio perform, and what limits the interpretation?",
         "verified": {
             "trade_count": int(len(trades)),
             "net_profit": float(trades["pnl"].sum()),

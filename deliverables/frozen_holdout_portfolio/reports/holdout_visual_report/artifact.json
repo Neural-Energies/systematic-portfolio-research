@@ -5,7 +5,7 @@
     "surface": "report",
     "title": "Frozen Holdout Portfolio Review",
     "description": "Visual review and validation status for the one-year frozen futures holdout.",
-    "generatedAt": "2026-08-24T04:19:42.426261+00:00",
+    "generatedAt": "2026-08-24T04:32:04.511732+00:00",
     "blocks": [
       {
         "id": "title",
@@ -18,7 +18,7 @@
         "type": "markdown",
         "sourceId": "holdout-ledgers",
         "layout": "full",
-        "body": "## Executive Summary\n\n- **The unseen-data result is economically strong.** The frozen seven-strategy portfolio earned **$194,682** on **$700,000** of starting capital across **1,471 trades**.\n\n- **It clears the revised candidate threshold.** Daily Sharpe was **1.89**, above the subsequently adopted **1.50** threshold. The original 2.0 aspiration was not met, and the 1.50 cutoff was selected after this result was visible.\n\n- **This is a legitimate research candidate, not yet a production-approved strategy.** Profit factor was **1.18**, closed-trade drawdown reached **$56,463**, and **77.6%** of net profit came from GC. Python order/fill parity and the effective transaction-cost configuration remain unresolved."
+        "body": "## Executive Summary\n\n- **The unseen-data result is economically strong.** The frozen seven-strategy portfolio earned **$194,682** on **$700,000** of starting capital across **1,471 trades**.\n\n- **It clears the revised candidate threshold.** Daily Sharpe was **1.89**, above the subsequently adopted **1.50** threshold. The original 2.0 aspiration was not met, and the 1.50 cutoff was selected after this result was visible.\n\n- **Performance breadth is uneven.** Profit factor was **1.18**, closed-trade drawdown reached **$56,463**, and **77.6%** of net profit came from GC. Python order/fill parity and the effective transaction-cost configuration remain unresolved."
       },
       {
         "id": "metrics",
@@ -99,12 +99,6 @@
         "layout": "full"
       },
       {
-        "id": "legitimacy",
-        "type": "markdown",
-        "layout": "full",
-        "body": "## Is this a legitimate strategy?\n\n**Legitimate as a research and paper-trading candidate: yes. Production-approved: no, not yet.** The holdout is genuinely later than the frozen research period, the result is profitable after recorded costs, trade frequency is substantial, and the conservative Sharpe convention remains above 1.5.\n\nThe current blockers are implementation evidence rather than headline performance: the native Python engine does not yet reproduce every entry, protective-order update, and fill; the test requested a $5 size-based commission but the ledger reflects $7 per ordinary round turn; the revised 1.5 threshold was adopted after the holdout was observed; and profit is highly concentrated in GC."
-      },
-      {
         "id": "strategy-table-note",
         "type": "markdown",
         "sourceId": "holdout-ledgers",
@@ -116,12 +110,6 @@
         "type": "table",
         "tableId": "strategy-table",
         "layout": "full"
-      },
-      {
-        "id": "next-steps",
-        "type": "markdown",
-        "layout": "full",
-        "body": "## Required next steps\n\n1. Complete Python trade-level parity on development data: timestamp, side, order price, protective updates, exit reason, and P&L.\n2. Resolve the $5 requested versus $7 observed transaction-cost difference and rerun the frozen test if the reference configuration was not applied as intended.\n3. Run a 30- to 60-trading-day paper/shadow period with daily signal and fill reconciliation.\n4. Add contract-roll, exchange-calendar, stale-data, position-limit, and kill-switch controls before any live connection.\n5. Require independent code and risk approval; do not transmit live orders from the current package."
       },
       {
         "id": "questions",
@@ -548,7 +536,7 @@
   },
   "snapshot": {
     "version": 1,
-    "generatedAt": "2026-08-24T04:19:42.426261+00:00",
+    "generatedAt": "2026-08-24T04:32:04.511732+00:00",
     "status": "ready",
     "datasets": {
       "metric_values": [

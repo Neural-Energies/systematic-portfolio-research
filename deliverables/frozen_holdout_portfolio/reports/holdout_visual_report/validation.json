@@ -1,6 +1,6 @@
 {
   "assessment": "Share with caveats",
-  "question": "Is the frozen unseen-data portfolio economically credible and ready for production implementation?",
+  "question": "How did the frozen unseen-data portfolio perform, and what limits the interpretation?",
   "verified": {
     "trade_count": 1471,
     "net_profit": 194682.0,
