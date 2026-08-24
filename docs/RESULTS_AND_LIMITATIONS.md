@@ -1,8 +1,26 @@
 # Results and Limitations
 
-## Selected candidate
+## A-Tier Strategy 1
 
-The highlighted candidate combines three session-reversal rules:
+Seven frozen strategies were evaluated from August 22, 2025 through August 21, 2026. Five of seven were individually profitable.
+
+| Market | Trades | Net profit | Profit factor | Win rate |
+|---|---:|---:|---:|---:|
+| GC | 635 | $150,995.00 | 1.246 | 58.7% |
+| CL | 119 | $27,077.00 | 1.343 | 55.5% |
+| ES | 203 | $14,911.00 | 1.071 | 47.8% |
+| HG | 93 | $7,031.00 | 1.093 | 59.1% |
+| 6J | 37 | $559.75 | 1.169 | 70.3% |
+| NG | 321 | -$2,607.00 | 0.977 | 49.5% |
+| 6E | 63 | -$3,284.75 | 0.583 | 44.4% |
+
+A-Tier Strategy 1 produced a hypothetical $194,682 net profit on $700,000 initial capital, a 27.81% return, 1.89 daily Sharpe, 1.1765 profit factor, 54.66% win rate, and 1,471 closed trades.
+
+The frozen artifacts contain two differently aggregated drawdown statistics. The chronological daily closed-trade series reports -$53,353.25 (-7.37%). The visual report's trade-sequence series reports -$56,463.25 (-8.07%). Both are retained; the difference is an unresolved aggregation/reconciliation item rather than silently choosing one definition.
+
+## CL / 6J / NG sealed candidate
+
+The separate custom-research candidate combines three session-reversal rules:
 
 | Product | Rule | Portfolio weight |
 |---|---|---:|
@@ -10,38 +28,22 @@ The highlighted candidate combines three session-reversal rules:
 | Japanese yen (6J) | Session reversal, 1-session lookback, 1.5 threshold | 50.00% |
 | Natural gas (NG) | Session reversal, 40-session lookback, 0.5 threshold | 8.34% |
 
-The rules avoid overnight exposure and use same-session open-to-close returns. Portfolio leverage was frozen before sealed evaluation.
+Its one-year sealed result was 54.9% total return, 44.1% annualized return, 18.2% annualized volatility, 2.42 Sharpe, and -5.7% maximum drawdown. Ten of thirteen months and four of five quarters were positive.
 
-## Development robustness
+## Material limitations
 
-At the modeled baseline of 1 bp per side, the development sample produced a 2.52 Sharpe ratio. The result remained above 2.2 Sharpe at 3.5 bps per side. All four predefined development folds were profitable, with fold Sharpe ratios of 1.72, 2.05, 3.72, and 2.78. A block bootstrap placed the fifth percentile of development Sharpe at 1.76.
-
-These results measure robustness within the development period; they are not independent out-of-sample evidence.
-
-## Sealed evaluation
-
-The one-year sealed holdout was accessed once after the strategy and portfolio were frozen. It produced:
-
-- 54.9% total return;
-- 44.1% annualized return;
-- 18.2% annualized volatility;
-- 2.42 Sharpe ratio;
-- -5.7% maximum drawdown;
-- 76.9% positive months; and
-- 80.0% positive quarters.
-
-Saved component returns reproduce the portfolio exactly, with a maximum absolute difference of zero. First-half and second-half sealed Sharpe ratios were 2.16 and 2.66. The portfolio Sharpe remained 2.26 after removing the best day and 1.32 after removing the best five days.
-
-## Material caveats
-
-1. **Limited independent history.** The sealed period is one year and may not represent a complete market cycle.
-2. **Profit concentration.** Crude oil supplied most sealed profit, while the Japanese yen sleeve was nearly flat.
-3. **Tail-day dependence.** Removing the ten best sealed days reduced total return to approximately zero.
-4. **Volatility drift.** Sealed volatility was 18.2% versus the 10% development target because leverage was frozen rather than refitted.
-5. **Modeled execution.** Costs use basis-point assumptions rather than broker-specific fills. Market impact, financing, taxes, margin, and operational failures are not modeled.
-6. **Continuous-series limitation.** Contract identifiers in the local continuous files are insufficient for a production roll and execution study.
-7. **Benchmark limitation.** The S&P 500 comparison uses a price index and excludes dividends.
+1. **Hypothetical results.** Neither portfolio represents live trading performance.
+2. **Limited independent history.** Each highlighted holdout covers one year and may not represent a complete market cycle.
+3. **Contribution concentration.** GC generated approximately 77.6% of the seven-strategy portfolio's net profit. CL generated most of the custom portfolio's sealed profit.
+4. **Individual failures.** NG and 6E were unprofitable in the seven-strategy holdout; the 6J sleeve was nearly flat in the custom portfolio.
+5. **Tail dependence.** The custom portfolio's result depended materially on its best days.
+6. **Modeled execution.** Slippage and costs are modeled. Live fills, queue position, spread changes, financing, taxes, margin constraints, and operational failures may differ.
+7. **Fee reconciliation.** The multi-market task requested a $5 commission, while the ledgers show an observed $7 round-turn cost. Published performance uses the more conservative observed amount.
+8. **Drawdown reconciliation.** Daily aggregation and trade-sequence reporting produce different maximum drawdowns in the frozen artifacts.
+9. **Contract and roll risk.** Continuous futures series require contract mapping, exchange-calendar, expiry, and roll validation before deployment.
+10. **Market impact.** One-contract tests do not establish capacity or impact at institutional size.
+11. **Post-result criterion.** The seven-strategy portfolio did not meet its original 2.0 Sharpe aspiration. A 1.5 candidate threshold was adopted after the result and is not represented as predeclared.
 
 ## Research decision
 
-The candidate passed the stated research audit and sealed Sharpe target. The appropriate next stage is paper trading and contract-level execution validation. The evidence does not support immediate live-capital deployment.
+Both portfolios are research candidates. The appropriate next stage is paper/shadow trading, broker-fill reconciliation, contract-level roll validation, independent code and risk review, and a new forward sample. The evidence does not support immediate live-capital deployment.

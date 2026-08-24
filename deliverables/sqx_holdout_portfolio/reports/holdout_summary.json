@@ -1,0 +1,45 @@
+{
+  "status": "passes_revised_candidate_threshold_not_original_aspirational_target",
+  "period": {
+    "start_utc": "2025-08-22",
+    "end_utc": "2026-08-21"
+  },
+  "assumptions": {
+    "portfolio_initial_capital": 700000.0,
+    "initial_capital_per_strategy": 100000.0,
+    "quantity_per_strategy": 1.0,
+    "requested_commission_per_trade": 5.0,
+    "observed_effective_round_turn_cost": 7.0,
+    "commission_configuration_difference_unresolved": true,
+    "slippage_ticks": 1,
+    "signal_timeframe": "H1",
+    "execution_precision": "one_minute",
+    "timezone": "UTC"
+  },
+  "portfolio": {
+    "trades": 1471,
+    "net_profit": 194682.0,
+    "return_on_initial_capital": 0.27811714285714284,
+    "profit_factor": 1.1765272732424699,
+    "win_rate": 0.5465669612508498,
+    "average_trade": 132.52688904016338,
+    "daily_sharpe_252": 1.8896295806345993,
+    "daily_sortino_252": 3.29130395217952,
+    "closed_trade_max_drawdown_dollars": -53353.25,
+    "closed_trade_max_drawdown_pct": -0.07366557452196232,
+    "original_aspirational_sharpe_target": 2.0,
+    "original_target_met": false,
+    "revised_candidate_sharpe_threshold": 1.5,
+    "revised_threshold_set_after_result_observed": true,
+    "revised_threshold_met": true
+  },
+  "strategies": [
+    {"symbol": "6E", "trades": 63, "net_profit": -3284.75, "profit_factor": 0.5833},
+    {"symbol": "6J", "trades": 37, "net_profit": 559.75, "profit_factor": 1.1692},
+    {"symbol": "CL", "trades": 119, "net_profit": 27077.0, "profit_factor": 1.3432},
+    {"symbol": "ES", "trades": 203, "net_profit": 14911.0, "profit_factor": 1.0708},
+    {"symbol": "GC", "trades": 635, "net_profit": 150995.0, "profit_factor": 1.2458},
+    {"symbol": "HG", "trades": 93, "net_profit": 7031.0, "profit_factor": 1.0934},
+    {"symbol": "NG", "trades": 321, "net_profit": -2607.0, "profit_factor": 0.9768}
+  ]
+}

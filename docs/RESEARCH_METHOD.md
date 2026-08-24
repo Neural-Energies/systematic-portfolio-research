@@ -2,44 +2,45 @@
 
 ## Objective
 
-Develop systematic futures signals individually, test them with realistic timing and costs, and combine complementary positive-expectancy rules into a portfolio. The search includes momentum, trend, mean reversion, breakout, relative value, lead/lag, and independently specified research hypotheses.
+Develop systematic futures signals, evaluate them with realistic timing and costs, and combine complementary rules into portfolios without using holdout results for model selection.
+
+The repository contains two distinct research tracks:
+
+1. A-Tier Strategy 1, a seven-strategy multi-market portfolio whose rule sets were frozen in an automated research environment before holdout evaluation.
+2. A custom three-rule CL / 6J / NG session-reversal portfolio developed with explicit temporal folds, neighbor tests, and a physically separated sealed year.
+
+Neither track represents live trading performance.
 
 ## Data and timing controls
 
 - One-minute source data are normalized into session and intraday research panels.
 - Signal information is lagged beyond its availability time before a position can earn returns.
 - Missing minute intervals are not bridged when computing high-frequency return features.
-- The latest twelve months are physically separated as a sealed holdout, with a five-day embargo.
-- Search, model fitting, parameter selection, and portfolio weighting use development data only.
+- Holdout samples are separated from development and selection activity.
+- Search, fitting, parameter selection, and portfolio weighting use development information only.
+- Raw licensed market data are excluded from version control.
 
 ## Research pipeline
 
 1. Validate timestamps, duplicates, OHLC consistency, symbol coverage, and missingness.
-2. Build point-in-time features and predeclared signal variants.
-3. Apply delayed execution, overlapping holding cohorts, and turnover costs.
-4. Evaluate predefined temporal folds and parameter neighborhoods.
-5. Combine strategies using constrained portfolio weights and correlation evidence.
-6. Freeze the candidate definition, inputs, and weights.
-7. Run the sealed period once without refitting or reselection.
-8. Reproduce saved returns and apply post-holdout sensitivity checks.
+2. Build point-in-time features and explicitly defined signal variants.
+3. Apply delayed execution, holding rules, slippage, and transaction costs.
+4. Evaluate development-period temporal stability and parameter sensitivity where supported.
+5. Combine strategies using constrained weights and correlation evidence.
+6. Freeze the candidate definition, inputs, and portfolio composition.
+7. Evaluate the isolated holdout without refitting or reselection.
+8. Preserve summary statistics, return series, manifests, and reconciliation evidence.
 
-## Backtesting controls
+## A-Tier Strategy 1 holdout design
 
-- VectorBT is used for product-level position and trade accounting where applicable.
-- PyPortfolioOpt supports constrained allocation and covariance-aware portfolio research.
-- QuantStats produces selected tear sheets after return streams are finalized.
-- Every promoted artifact includes definitions, manifests, metrics, and checksums.
-- Raw data and generated development panels are excluded from version control.
+The seven rule sets cover 6E, 6J, CL, ES, GC, HG, and NG. The holdout ran from August 22, 2025 through August 21, 2026 using hourly signals, one-minute execution precision, one contract per rule, one tick of slippage, and the observed $7 round-turn ledger cost.
 
-## Audit evidence
+The holdout evidence is frozen. The package includes the summary JSON, visual report, validation record, signal implementation, and point-in-time tests. It does not include the licensed input data or private trade ledgers.
 
-The selected portfolio package contains:
+## Custom-research validation design
 
-- frozen strategy definitions and portfolio weights;
-- development and sealed return series;
-- temporal-fold and parameter-neighbor audits;
-- cost-stress and block-bootstrap results;
-- a sealed-evaluation lock and source-data fingerprint;
-- an independent post-sealed audit and reproducibility checksums.
+The CL / 6J / NG candidate used a five-day embargo and a physically separated final year. Pre-holdout checks included four development folds, parameter-neighbor tests, cost stress, block bootstrap, and portfolio concentration review. Strategy definitions and weights were frozen before the sealed evaluator was run once.
 
-The full experimental archive is retained separately from this interview-facing branch.
+## Audit principle
+
+A holdout is evidence only while it remains outside the research loop. Repeated evaluation, threshold changes, or parameter changes informed by holdout results would convert it into development data. This repository therefore preserves the frozen artifacts and explicitly identifies any criterion adopted after a result was observed.

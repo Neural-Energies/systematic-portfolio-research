@@ -1,6 +1,6 @@
 # Reproducibility
 
-## Environment
+## Root research environment
 
 - Python 3.12
 - Dependencies locked in `uv.lock`
@@ -16,6 +16,20 @@ uv run python -m mypy src
 uv run python -m pytest -q
 ```
 
+## A-Tier Strategy 1 package checks
+
+A-Tier Strategy 1 has an isolated Python configuration. Its implementation and point-in-time tests can be checked without the private market data:
+
+```powershell
+cd deliverables/*_holdout_portfolio
+uv sync --frozen
+uv run ruff format --check src tests scripts
+uv run ruff check src tests
+uv run pytest -q
+```
+
+The frozen report cannot be regenerated without the excluded private ledgers. Rebuilding it would not constitute an independent holdout test and is not required for repository review.
+
 ## Data boundary
 
 Raw market data are intentionally excluded because vendor data may be licensed and too large for source control. The repository includes:
@@ -23,12 +37,12 @@ Raw market data are intentionally excluded because vendor data may be licensed a
 - schema and validation code;
 - example universe and research configuration;
 - tests using controlled fixtures;
-- selected derived evidence for the frozen candidate; and
+- selected derived evidence for frozen candidates; and
 - source fingerprints and manifests for auditability.
 
-To reproduce full backtests, provide compatible one-minute data at the paths defined in the local data-source configuration, run the catalog and normalization stages, and then execute the documented research commands.
+To reproduce the root research pipeline, provide compatible one-minute data at the paths defined in the local data-source configuration, then run the catalog, normalization, and development stages.
 
-## Key commands
+## Root pipeline commands
 
 ```powershell
 uv run research-data
@@ -39,4 +53,4 @@ uv run research-strategy-factory
 uv run research-candidate-portfolio
 ```
 
-The sealed evaluator is intentionally separate from development search. A new holdout should remain locked until a candidate is frozen; repeated evaluation on the same holdout converts it into development data.
+The sealed evaluators are intentionally separate from development search. A new holdout should remain locked until a candidate is frozen; repeated evaluation on the same holdout converts it into development data.

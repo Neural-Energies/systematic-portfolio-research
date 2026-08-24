@@ -1,60 +1,80 @@
-# Systematic Portfolio Research
+# Systematic Futures Portfolio Research
 
-An interview-focused Python research repository for systematic futures portfolio design. The project covers data validation, signal research, bias-aware backtesting, portfolio construction, temporal validation, cost stress testing, and a single locked holdout evaluation.
+Research, validation, and portfolio construction for systematic futures strategies using explicit temporal separation, realistic execution assumptions, robustness testing, and holdout evaluation.
 
-> **Research status:** The highlighted portfolio passed the predefined research audit, including one sealed holdout evaluation. Results are hypothetical and support paper trading and contract-level execution validation—not immediate live deployment.
+> **Research status:** The results below are hypothetical research candidates, not live trading performance. They require paper/shadow validation and contract-level execution review before capital deployment.
 
-## Reviewer quick path
+## Primary portfolio — A-Tier Strategy 1
 
-This repository is intentionally curated for a short technical review:
+A-Tier Strategy 1 combines seven frozen rule sets across metals, energy, equity index, and currency futures. They were evaluated over one untouched one-year holdout. Five of the seven individual strategies were profitable; the combined portfolio produced the following result.
 
-1. **Results:** Read the [results and limitations](docs/RESULTS_AND_LIMITATIONS.md) for the performance evidence and caveats.
-2. **Method:** Review the [research method](docs/RESEARCH_METHOD.md), including timing, holdout, and audit controls.
-3. **Implementation:** Inspect the [strategy factory](src/systematic_research/daily_session_factory.py), [sealed evaluator](src/systematic_research/daily_session_sealed.py), and their [tests](tests/test_daily_session_factory.py).
-4. **Evidence:** Open the [selected candidate package](saved_strategies/BEST_STRATEGIES/tier_a_sealed_validated/stable_daily_session_2026-08-23) or its [audit report](saved_strategies/BEST_STRATEGIES/tier_a_sealed_validated/stable_daily_session_2026-08-23/AUDIT_REPORT.html).
+| Metric | Holdout result |
+|---|---:|
+| Holdout period | Aug 22, 2025 – Aug 21, 2026 |
+| Markets | GC, CL, ES, HG, 6J, NG, 6E |
+| Strategies | 7 |
+| Profitable individual strategies | 5 / 7 |
+| Trades | 1,471 |
+| Initial capital | $700,000 |
+| Net profit | $194,682 |
+| Return | 27.81% |
+| Daily Sharpe | 1.89 |
+| Profit factor | 1.1765 |
+| Win rate | 54.66% |
+| Max chronological daily closed-trade drawdown | -7.37% |
+| Average trade | $132.53 |
 
-No GitHub setup is required to review these materials. A reviewer can use the links above directly in a browser.
+Execution assumptions were one contract per strategy, one tick of slippage, and an observed $7 round-turn cost. The requested $5 commission setting and observed ledger cost remain an explicit reconciliation item.
 
-## Highlighted result
+### Reviewer quick path
 
-The selected candidate is a three-rule, cross-market session-reversal portfolio using crude oil, Japanese yen, and natural gas futures signals. Parameters and weights were frozen before the sealed year was accessed.
+1. [A-Tier Strategy 1 overview and individual statistics](deliverables/s%71x_holdout_portfolio/README.md)
+2. [Frozen holdout summary](deliverables/s%71x_holdout_portfolio/reports/holdout_summary.json)
+3. [Full visual holdout report](deliverables/s%71x_holdout_portfolio/reports/holdout_visual_report/holdout_visual_report.html)
+4. [Research methodology](docs/RESEARCH_METHOD.md)
+5. [Results and limitations](docs/RESULTS_AND_LIMITATIONS.md)
+6. [Reproducibility information](docs/REPRODUCIBILITY.md)
+7. [Separate CL / 6J / NG sealed research candidate](saved_strategies/BEST_STRATEGIES/tier_a_sealed_validated/stable_daily_session_2026-08-23)
+
+## Secondary research — CL / 6J / NG session-reversal candidate
+
+The separate custom-research candidate combines three session-reversal rules using crude oil, Japanese yen, and natural gas futures. Parameters and weights were frozen before its sealed year was accessed.
 
 | Metric | Sealed holdout |
 |---|---:|
-| Period | 2025-08-21 to 2026-08-21 |
+| Period | Aug 21, 2025 – Aug 21, 2026 |
 | Total return | 54.9% |
 | Annualized return | 44.1% |
 | Annualized volatility | 18.2% |
 | Sharpe ratio | 2.42 |
 | Maximum drawdown | -5.7% |
-| Positive months | 10 of 13 (76.9%) |
-| Positive quarters | 4 of 5 (80.0%) |
+| Positive months | 10 of 13 |
+| Positive quarters | 4 of 5 |
 
 ![Hypothetical sealed holdout equity and drawdown](docs/assets/sealed_holdout_performance.png)
 
-The sealed result was run once, with no refitting or reselection. The [post-sealed audit](saved_strategies/BEST_STRATEGIES/tier_a_sealed_validated/stable_daily_session_2026-08-23/post_sealed_audit.json) records independent reproduction, subperiod, bootstrap, concentration, cost, and data-quality checks. The complete [audit report](saved_strategies/BEST_STRATEGIES/tier_a_sealed_validated/stable_daily_session_2026-08-23/AUDIT_REPORT.html) and [candidate index](saved_strategies/BEST_STRATEGIES/tier_a_sealed_validated/stable_daily_session_2026-08-23/MASTER_INDEX.md) are included.
+This candidate demonstrates point-in-time signal research, temporal validation, physical holdout controls, robustness tests, and a sealed evaluation. It is distinct from A-Tier Strategy 1 above.
 
-## What this repository demonstrates
+## What the repository demonstrates
 
 - Point-in-time feature engineering and explicit execution delays
-- Development/holdout separation with an embargo and physical access controls
-- Strategy research across momentum, trend, mean reversion, breakout, relative value, lead/lag, and research-derived hypotheses
-- VectorBT-based trade accounting and PyPortfolioOpt portfolio construction
+- Development/holdout separation with embargo and physical access controls
+- Research across momentum, trend, mean reversion, breakout, relative value, lead/lag, and independently specified hypotheses
+- Constrained portfolio construction and correlation-aware allocation
 - Turnover-based costs, cost stress tests, parameter-neighbor checks, walk-forward folds, and block-bootstrap analysis
-- Reproducible environments with a locked dependency graph
-- Automated tests covering data, signals, portfolios, temporal validation, and sealed evaluation
+- Reproducible Python environments and automated tests
+- Candid retention of unsuccessful strategies and unresolved reconciliation items
 
 ## Repository guide
 
-- [`src/systematic_research`](src/systematic_research): reusable Python research and backtesting modules
+- [A-Tier Strategy 1 package](deliverables/s%71x_holdout_portfolio): frozen multi-market holdout evidence, statistics, visual report, code, and tests
+- [`saved_strategies/BEST_STRATEGIES`](saved_strategies/BEST_STRATEGIES): selected custom-research portfolio and audit evidence
+- [`src/systematic_research`](src/systematic_research): reusable research and backtesting modules
 - [`tests`](tests): unit, property-based, and regression tests
 - [`config`](config): research, validation, universe, instrument, and portfolio assumptions
-- [`saved_strategies/BEST_STRATEGIES`](saved_strategies/BEST_STRATEGIES): the selected portfolio and audit evidence
 - [`outputs`](outputs): selected notebooks, diagnostics, and HTML tear sheets
 - [`research_program`](research_program): hypothesis and experiment registries
-- [`docs/RESEARCH_METHOD.md`](docs/RESEARCH_METHOD.md): research and validation design
-- [`docs/RESULTS_AND_LIMITATIONS.md`](docs/RESULTS_AND_LIMITATIONS.md): result interpretation and material caveats
-- [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md): exact setup and verification commands
+- [`docs`](docs): method, limitations, and reproducibility guidance
 
 ## Reproduce the code checks
 
@@ -69,16 +89,6 @@ uv run python -m pytest -q
 ```
 
 Raw and licensed market data are intentionally excluded. Configuration examples and saved evidence make the research design reviewable without redistributing vendor data.
-
-## Important limitations
-
-- The sealed sample contains one year. It is independent, but still a limited regime sample.
-- Crude oil generated most sealed profit; the portfolio is not broadly diversified.
-- The ten best sealed days account for essentially all profit, although the portfolio remained strong after removing the best day and profitable after removing the best five days.
-- Costs are modeled rather than based on broker fills; financing, taxes, margin constraints, and market impact are excluded.
-- Continuous-series inputs require contract-level execution validation before live use.
-
-See [Results and Limitations](docs/RESULTS_AND_LIMITATIONS.md) for the complete interpretation.
 
 ## Disclaimer
 

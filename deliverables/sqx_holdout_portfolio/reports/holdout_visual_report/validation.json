@@ -1,0 +1,27 @@
+{
+  "assessment": "Share with caveats",
+  "question": "How did the frozen unseen-data portfolio perform, and what limits the interpretation?",
+  "verified": {
+    "trade_count": 1471,
+    "net_profit": 194682.0,
+    "daily_sharpe_calendar_zeros": 1.8896295806346,
+    "daily_sharpe_weekdays_only": 2.306883176659239,
+    "profit_factor": 1.1765272732424699,
+    "win_rate": 0.5465669612508498,
+    "max_closed_trade_drawdown": -56463.25,
+    "positive_months": 11,
+    "gc_profit_contribution": 0.7755981549398506,
+    "composite_trade_ids_unique": true
+  },
+  "blockers": [
+    "Python trade/fill parity is not complete.",
+    "Requested commission value and observed ledger cost do not reconcile.",
+    "Open-position mark-to-market drawdown is unavailable.",
+    "No forward paper/shadow evidence exists yet."
+  ],
+  "required_caveats": [
+    "The 1.5 threshold was adopted after the holdout result was observed.",
+    "GC produced most of portfolio profit.",
+    "One year is a single future regime, not repeated independent validation."
+  ]
+}
