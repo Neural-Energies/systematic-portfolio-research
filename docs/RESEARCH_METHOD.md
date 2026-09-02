@@ -6,7 +6,7 @@ Develop systematic futures signals, evaluate them with realistic timing and cost
 
 The repository contains two distinct research tracks:
 
-1. A-Tier Strategy 1, a seven-strategy multi-market portfolio whose rule sets were frozen in an automated research environment before holdout evaluation.
+1. A seven-strategy multi-market portfolio whose rule sets were frozen in an automated research environment before holdout evaluation.
 2. A custom three-rule CL / 6J / NG session-reversal portfolio developed with explicit temporal folds, neighbor tests, and a physically separated sealed year.
 
 Neither track represents live trading performance.
@@ -31,11 +31,13 @@ Neither track represents live trading performance.
 7. Evaluate the isolated holdout without refitting or reselection.
 8. Preserve summary statistics, return series, manifests, and reconciliation evidence.
 
-## A-Tier Strategy 1 holdout design
+## Seven-strategy multi-market holdout design
 
 The seven rule sets cover 6E, 6J, CL, ES, GC, HG, and NG. The holdout ran from August 22, 2025 through August 21, 2026 using hourly signals, one-minute execution precision, one contract per rule, one tick of slippage, and the observed $7 round-turn ledger cost.
 
 The holdout evidence is frozen. The package includes the summary JSON, visual report, validation record, signal implementation, and point-in-time tests. It does not include the licensed input data or private trade ledgers.
+
+The 1.89 Sharpe result did not satisfy the research program's original 2.0 Tier-A aspiration. A 1.5 candidate threshold was adopted after the result was observed, so this portfolio is presented as a frozen holdout research candidate rather than as a predeclared Tier-A promotion.
 
 ## Custom-research validation design
 
