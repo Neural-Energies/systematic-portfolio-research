@@ -1,6 +1,6 @@
 # Results and Limitations
 
-## A-Tier Strategy 1
+## Seven-strategy multi-market holdout
 
 Seven frozen strategies were evaluated from August 22, 2025 through August 21, 2026. Five of seven were individually profitable.
 
@@ -14,9 +14,11 @@ Seven frozen strategies were evaluated from August 22, 2025 through August 21, 2
 | NG | 321 | -$2,607.00 | 0.977 | 49.5% |
 | 6E | 63 | -$3,284.75 | 0.583 | 44.4% |
 
-A-Tier Strategy 1 produced a hypothetical $194,682 net profit on $700,000 initial capital, a 27.81% return, 1.89 daily Sharpe, 1.1765 profit factor, 54.66% win rate, and 1,471 closed trades.
+The portfolio produced a hypothetical $194,682 net profit on $700,000 initial capital, a 27.81% return, 1.89 daily Sharpe, 1.1765 profit factor, 54.66% win rate, and 1,471 closed trades.
 
 The frozen artifacts contain two differently aggregated drawdown statistics. The chronological daily closed-trade series reports -$53,353.25 (-7.37%). The visual report's trade-sequence series reports -$56,463.25 (-8.07%). Both are retained; the difference is an unresolved aggregation/reconciliation item rather than silently choosing one definition.
+
+The result did not meet the research program's original 2.0 Tier-A Sharpe aspiration. A 1.5 candidate threshold was adopted after the holdout result was observed and is therefore not presented as a predeclared Tier-A pass criterion.
 
 ## CL / 6J / NG sealed candidate
 
