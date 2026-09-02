@@ -1,4 +1,4 @@
-# A-Tier Strategy 1
+# Frozen Multi-Market Holdout Portfolio
 
 Interview-facing package for seven frozen futures rule sets covering 6E, 6J, CL, ES, GC, HG, and NG. The package creates point-in-time stop-order signals; it does not connect to a broker or transmit live orders.
 
@@ -20,7 +20,7 @@ The rule sets were frozen before the holdout test. The untouched test covers Aug
 
 The reference ledgers show an observed $7 round-turn cost on ordinary closed trades, compared with a requested $5 commission setting. Published performance uses the more conservative observed cost; the $2 difference remains an explicit reconciliation item.
 
-The result did not meet the original 2.0 Sharpe aspiration. A 1.5 deployment-candidate threshold was adopted after the holdout result was observed and is therefore not presented as a predeclared pass criterion.
+The result did not meet the research program's original 2.0 Tier-A Sharpe aspiration. A 1.5 deployment-candidate threshold was adopted after the holdout result was observed and is therefore not presented as a predeclared Tier-A pass criterion.
 
 ## Individual strategies
 
