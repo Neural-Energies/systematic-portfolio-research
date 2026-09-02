@@ -15,6 +15,7 @@ data/raw/*
 data/interim/*
 data/processed/*
 data/catalog/*
+data/external/*
 reports/figures/*
 reports/tear_sheets/*
 !data/raw/.gitkeep
@@ -38,5 +39,6 @@ config/local*.yaml
 *.db-wal
 
 # Editors and operating systems
+.vscode/
 .DS_Store
 Thumbs.db
