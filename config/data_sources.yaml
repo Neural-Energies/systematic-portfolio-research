@@ -1,5 +1,5 @@
 market_data:
-  source_directory: C:/Users/JOSHD/Documents/Codex/2026-08-22/i-have-a-migraine-and-i/outputs/Databento_3Y_1Min_Portfolio_2023-08-22_to_2026-08-22
+  source_directory: data/external/databento_3y_1min
   file_glob: "*_1Min_*.csv"
   format: databento_continuous_front_contract
   raw_data_is_read_only: true

@@ -1,3 +1,7 @@
+# Historical development-stage portfolio design configuration.
+# Retained for research provenance; this is NOT the specification for the featured
+# frozen multi-market holdout portfolio documented in the repository README.
+
 portfolio_design:
   status: design_only_no_holdout_no_backtest
   starting_capital_usd: 1000000

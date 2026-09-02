@@ -16,9 +16,11 @@ uv run python -m mypy src
 uv run python -m pytest -q
 ```
 
-## A-Tier Strategy 1 package checks
+The same checks run in GitHub Actions on pushes and pull requests.
 
-A-Tier Strategy 1 has an isolated Python configuration. Its implementation and point-in-time tests can be checked without the private market data:
+## Frozen multi-market holdout package checks
+
+The seven-strategy holdout package has an isolated Python configuration. Its implementation and point-in-time tests can be checked without the private market data:
 
 ```powershell
 cd deliverables/*_holdout_portfolio
@@ -39,6 +41,8 @@ Raw market data are intentionally excluded because vendor data may be licensed a
 - tests using controlled fixtures;
 - selected derived evidence for frozen candidates; and
 - source fingerprints and manifests for auditability.
+
+The public `config/data_sources.yaml` uses a generic relative source path. Local machine-specific data locations should be supplied through ignored local configuration rather than committed to the repository.
 
 To reproduce the root research pipeline, provide compatible one-minute data at the paths defined in the local data-source configuration, then run the catalog, normalization, and development stages.
 

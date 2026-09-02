@@ -1,12 +1,14 @@
 # Systematic Futures Portfolio Research
 
+[![Quality](https://github.com/Neural-Energies/systematic-portfolio-research/actions/workflows/quality.yml/badge.svg)](https://github.com/Neural-Energies/systematic-portfolio-research/actions/workflows/quality.yml)
+
 Research, validation, and portfolio construction for systematic futures strategies using explicit temporal separation, realistic execution assumptions, robustness testing, and holdout evaluation.
 
 > **Research status:** The results below are hypothetical research candidates, not live trading performance. They require paper/shadow validation and contract-level execution review before capital deployment.
 
-## Primary portfolio — A-Tier Strategy 1
+## Primary portfolio — frozen multi-market holdout
 
-A-Tier Strategy 1 combines seven frozen rule sets across metals, energy, equity index, and currency futures. They were evaluated over one untouched one-year holdout. Five of the seven individual strategies were profitable; the combined portfolio produced the following result.
+The primary portfolio combines seven frozen rule sets across metals, energy, equity index, and currency futures. They were evaluated over one untouched one-year holdout. Five of the seven individual strategies were profitable; the combined portfolio produced the following result.
 
 | Metric | Holdout result |
 |---|---:|
@@ -26,11 +28,13 @@ A-Tier Strategy 1 combines seven frozen rule sets across metals, energy, equity 
 
 Execution assumptions were one contract per strategy, one tick of slippage, and an observed $7 round-turn cost. The requested $5 commission setting and observed ledger cost remain an explicit reconciliation item.
 
+The result did **not** meet the research program's original 2.0 Sharpe aspiration. A 1.5 candidate threshold was adopted after the result was observed and is not represented as a predeclared Tier-A promotion criterion.
+
 ### Reviewer quick path
 
-1. [A-Tier Strategy 1 overview and individual statistics](deliverables/s%71x_holdout_portfolio/README.md)
-2. [Frozen holdout summary](deliverables/s%71x_holdout_portfolio/reports/holdout_summary.json)
-3. [Full visual holdout report](deliverables/s%71x_holdout_portfolio/reports/holdout_visual_report/holdout_visual_report.html)
+1. [Frozen multi-market holdout overview and individual statistics](deliverables/sqx_holdout_portfolio/README.md)
+2. [Frozen holdout summary](deliverables/sqx_holdout_portfolio/reports/holdout_summary.json)
+3. [Full visual holdout report](deliverables/sqx_holdout_portfolio/reports/holdout_visual_report/holdout_visual_report.html)
 4. [Research methodology](docs/RESEARCH_METHOD.md)
 5. [Results and limitations](docs/RESULTS_AND_LIMITATIONS.md)
 6. [Reproducibility information](docs/REPRODUCIBILITY.md)
@@ -53,7 +57,7 @@ The separate custom-research candidate combines three session-reversal rules usi
 
 ![Hypothetical sealed holdout equity and drawdown](docs/assets/sealed_holdout_performance.png)
 
-This candidate demonstrates point-in-time signal research, temporal validation, physical holdout controls, robustness tests, and a sealed evaluation. It is distinct from A-Tier Strategy 1 above.
+This candidate demonstrates point-in-time signal research, temporal validation, physical holdout controls, robustness tests, and a sealed evaluation. It is distinct from the seven-strategy multi-market holdout above.
 
 ## What the repository demonstrates
 
@@ -67,13 +71,13 @@ This candidate demonstrates point-in-time signal research, temporal validation, 
 
 ## Repository guide
 
-- [A-Tier Strategy 1 package](deliverables/s%71x_holdout_portfolio): frozen multi-market holdout evidence, statistics, visual report, code, and tests
+- [Frozen multi-market holdout package](deliverables/sqx_holdout_portfolio): frozen multi-market holdout evidence, statistics, visual report, code, and tests
 - [`saved_strategies/BEST_STRATEGIES`](saved_strategies/BEST_STRATEGIES): selected custom-research portfolio and audit evidence
 - [`src/systematic_research`](src/systematic_research): reusable research and backtesting modules
-- [`tests`](tests): unit, property-based, and regression tests
-- [`config`](config): research, validation, universe, instrument, and portfolio assumptions
+- [`tests`](tests): unit, property-based, regression, temporal-separation, and sealed-evaluation tests
+- [`config`](config): research, validation, universe, instrument, and portfolio assumptions; `config/portfolio.yaml` is retained as a historical development-stage design configuration and is not the specification for the featured frozen holdout
 - [`outputs`](outputs): selected notebooks, diagnostics, and HTML tear sheets
-- [`research_program`](research_program): hypothesis and experiment registries
+- [`research_program`](research_program): hypothesis and experiment registries; some `data/processed/...` manifest paths are provenance pointers to intentionally excluded local research artifacts
 - [`docs`](docs): method, limitations, and reproducibility guidance
 
 ## Reproduce the code checks
@@ -87,6 +91,8 @@ uv run ruff check src tests
 uv run python -m mypy src
 uv run python -m pytest -q
 ```
+
+The same checks run in GitHub Actions on pushes and pull requests.
 
 Raw and licensed market data are intentionally excluded. Configuration examples and saved evidence make the research design reviewable without redistributing vendor data.
 
