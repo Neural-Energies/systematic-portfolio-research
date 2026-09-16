@@ -74,6 +74,9 @@ research-institutional-eda = "systematic_research.institutional_eda:main"
 research-free-crypto = "systematic_research.free_market_data:main"
 research-free-fx = "systematic_research.oanda_historical:main"
 research-residual-signals = "systematic_research.residual_signal_research:main"
+research-market-structure = "systematic_research.market_structure_review:main"
+research-event-probabilities = "systematic_research.event_probability_engine:main"
+research-dynamic-states = "systematic_research.dynamic_state_scan:main"
 
 [dependency-groups]
 dev = [
