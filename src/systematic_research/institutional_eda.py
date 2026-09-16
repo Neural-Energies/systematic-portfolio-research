@@ -82,6 +82,19 @@ def session_data(bars: pd.DataFrame) -> pd.DataFrame:
     )
     daily["return"] = daily.groupby("symbol", observed=True)["close"].pct_change(fill_method=None)
     daily["range_pct"] = (daily["high"] - daily["low"]) / daily["open"]
+    prior_close = daily.groupby("symbol", observed=True)["close"].shift()
+    daily["true_range"] = pd.concat(
+        [
+            daily["high"] - daily["low"],
+            (daily["high"] - prior_close).abs(),
+            (daily["low"] - prior_close).abs(),
+        ],
+        axis=1,
+    ).max(axis=1)
+    daily["atr_14"] = daily.groupby("symbol", observed=True)["true_range"].transform(
+        lambda values: values.rolling(14, min_periods=14).mean()
+    )
+    daily["normalized_atr_14"] = daily["atr_14"] / daily["close"]
     daily["close_location"] = (daily["close"] - daily["low"]) / (daily["high"] - daily["low"])
     return daily.replace([np.inf, -np.inf], np.nan)
 
@@ -139,6 +152,8 @@ def return_diagnostics(daily: pd.DataFrame) -> pd.DataFrame:
             "acf_1": float(returns.autocorr(1)),
             "acf_5": float(returns.autocorr(5)),
             "jarque_bera_p": float(stats.jarque_bera(returns).pvalue),
+            "atr_14": float(frame["atr_14"].iloc[-1]),
+            "normalized_atr_14": float(frame["normalized_atr_14"].iloc[-1]),
             **dd,
         }
         for window in DAILY_WINDOWS:
@@ -292,7 +307,7 @@ def diagnostic_inventory() -> pd.DataFrame:
             "weekly return",
             "monthly return",
             "quarterly return",
-            "range percentile",
+            "normalized ATR",
         ],
         "Distribution": [
             "mean",
