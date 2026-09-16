@@ -69,6 +69,7 @@ research-pca-residual-reversal = "systematic_research.pca_residual_reversal:main
 research-managed-money-diffusion = "systematic_research.managed_money_diffusion:main"
 research-regularized-var-network = "systematic_research.regularized_var_network:main"
 research-eia-release-drift = "systematic_research.eia_release_drift:main"
+research-institutional-eda = "systematic_research.institutional_eda:main"
 
 [dependency-groups]
 dev = [
