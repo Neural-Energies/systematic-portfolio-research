@@ -10,6 +10,7 @@ readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "arch>=7.2,<9",
+  "certifi>=2025,<2027",
   "duckdb>=1.4,<2",
   "exchange-calendars>=4.11,<5",
   "ipykernel>=7,<8",
@@ -70,6 +71,7 @@ research-managed-money-diffusion = "systematic_research.managed_money_diffusion:
 research-regularized-var-network = "systematic_research.regularized_var_network:main"
 research-eia-release-drift = "systematic_research.eia_release_drift:main"
 research-institutional-eda = "systematic_research.institutional_eda:main"
+research-free-crypto = "systematic_research.free_market_data:main"
 
 [dependency-groups]
 dev = [

@@ -2229,6 +2229,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "arch" },
+    { name = "certifi" },
     { name = "duckdb" },
     { name = "exchange-calendars" },
     { name = "ipykernel" },
@@ -2266,6 +2267,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "arch", specifier = ">=7.2,<9" },
+    { name = "certifi", specifier = ">=2025,<2027" },
     { name = "duckdb", specifier = ">=1.4,<2" },
     { name = "exchange-calendars", specifier = ">=4.11,<5" },
     { name = "ipykernel", specifier = ">=7,<8" },
