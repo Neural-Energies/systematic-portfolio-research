@@ -73,6 +73,7 @@ research-eia-release-drift = "systematic_research.eia_release_drift:main"
 research-institutional-eda = "systematic_research.institutional_eda:main"
 research-free-crypto = "systematic_research.free_market_data:main"
 research-free-fx = "systematic_research.oanda_historical:main"
+research-residual-signals = "systematic_research.residual_signal_research:main"
 
 [dependency-groups]
 dev = [
