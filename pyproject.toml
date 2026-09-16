@@ -77,6 +77,7 @@ research-residual-signals = "systematic_research.residual_signal_research:main"
 research-market-structure = "systematic_research.market_structure_review:main"
 research-event-probabilities = "systematic_research.event_probability_engine:main"
 research-price-action = "systematic_research.price_action_probability_engine:main"
+research-pattern-discovery = "systematic_research.pattern_discovery:main"
 research-dynamic-states = "systematic_research.dynamic_state_scan:main"
 
 [dependency-groups]
