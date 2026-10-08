@@ -1,23 +1,67 @@
 portfolio_design:
-  status: design_only_no_holdout_no_backtest
+  status: research_universe_defined_no_strategy_backtest
   starting_capital_usd: 1000000
-  data_frequency: 1_minute_ohlcv
-  style: systematic_long_short
-  maximum_holding_sessions: 5
-  continuously_invested:
-    enabled: true
-    definition: maintain_long_and_short_gross_exposure_not_every_instrument
-    emergency_deleveraging_allowed: true
+  style: medium_frequency_systematic_long_short_futures
+
+  data:
+    source_frequency: 1_minute_ohlcv
+    strategy_bar_minutes: [5, 15, 30, 60]
+    daily_session_bars_enabled: true
+    timezone_storage: UTC
+    product_session_timezone: America/New_York
+    require_gap_aware_resampling: true
+    require_product_specific_session_calendars: true
+
+  trading_horizon:
+    minimum_holding_minutes: 5
+    maximum_holding_sessions: 5
+    intraday_and_overnight_positions_allowed: true
+    deterministic_time_or_signal_exit_required: true
+
   universe:
-    initial: [CL, HG, NQ, ZN, ZT]
-    pending_older_development_history: [ES, GC]
-    excluded_invalid_data: [6J]
+    initial: [HG, 6J, 6E, CL, GC, ES]
+    by_asset_class:
+      equity_index: [ES]
+      energy: [CL]
+      metals: [GC, HG]
+      fx: [6E, 6J]
+    additions_require_data_quality_review: true
+
+  strategy_program:
+    construction: portfolio_of_independently_tested_strategy_sleeves
+    families:
+      - id: cta_trend
+        horizons: [intraday, multi_day]
+        concepts: [breakout, moving_average_trend]
+      - id: mean_reversion
+        horizons: [intraday, multi_day]
+        concepts: [vwap_reversion, normalized_extreme_return_reversal]
+      - id: day_trading
+        horizons: [intraday]
+        concepts: [opening_range_breakout, session_reversal]
+        flat_by_session_close_default: true
+      - id: momentum
+        horizons: [intraday, multi_day]
+        concepts: [short_horizon_return_momentum, range_expansion]
+      - id: lead_lag
+        horizons: [intraday, multi_day]
+        concepts: [lagged_cross_market_returns, economically_justified_leaders]
+        synchronized_bars_required: true
+      - id: spread_relative_value
+        horizons: [intraday, multi_day]
+        concepts: [relative_value, residual_reversion, stable_spreads]
+        hedge_ratio_must_be_estimated_out_of_sample: true
+    common_strategy_contract_required: true
+    no_instrument_specific_parameter_optimization: true
+
   temporal_controls:
-    development_only: true
+    research_partition: development_only
     sealed_holdout_access: false
-    signal_execution_delay_minutes: 1
+    signal_execution_delay_bars: 1
     expanding_walk_forward: true
     embargo_sessions: 5
+    random_time_series_splits_forbidden: true
+
   risk:
     target_annualized_volatility: 0.10
     normal_gross_exposure: 1.0
@@ -31,50 +75,38 @@ portfolio_design:
       - {drawdown: 0.075, action: reduce_target_risk}
       - {drawdown: 0.10, action: materially_reduce_exposure}
       - {drawdown: 0.15, action: emergency_minimum_risk_posture}
+
   covariance:
     method: exponentially_weighted_with_shrinkage
     lookback_sessions: 60
     half_life_sessions: 20
+
   costs:
     commissions_required: true
+    exchange_fees_required: true
     spread_required: true
     slippage_required: true
     roll_costs_required: true
-    calibration_status: conservative_placeholders_pending_review
-  correlation_policy:
-    preserve_correlated_instruments: true
-    uses: [relative_value, spreads, lead_lag, residual_momentum, dynamic_hedging, correlation_regimes]
-  regime_engine:
-    ensemble: true
-    hard_labels_for_allocation: false
-    probability_weighted: true
-    uncertain_classification_action: reduce_regime_reliance
-    markov_states: [low_volatility_trend, high_volatility_trend, mean_reverting_choppy, stress_transition]
-    observable_inputs:
-      - atr_percentile
-      - realized_volatility_percentile
-      - volatility_acceleration
-      - trend_efficiency
-      - moving_average_structure
-      - range_expansion
-      - correlation_concentration
-      - liquidity_and_tape_pace_proxies
-    estimation: expanding_walk_forward
-  relationship_discovery:
-    methods:
-      - lagged_cross_correlations
-      - rolling_hedge_ratios_and_residuals
-      - economically_justified_cointegration
-      - lead_lag_stability
-      - relative_momentum
-      - correlation_breakdown_and_convergence
-      - conditional_relationships_by_regime
-      - partial_correlation_with_broad_factor_controls
-    multiple_testing_controls_required: true
-    walk_forward_stability_required: true
+    stress_multipliers: [1.0, 1.5, 2.0, 3.0]
+    calibration_status: placeholders_must_be_replaced_before_validation
+
+  portfolio_research:
+    compare_allocation_methods:
+      - equal_strategy_risk
+      - inverse_volatility
+      - equal_risk_contribution
+      - shrinkage_covariance
+      - capped_robust_allocation
+    require_with_and_without_strategy_analysis: true
+    require_trend_vs_mean_reversion_analysis: true
+    require_turnover_and_cost_attribution: true
+
   build_sequence:
-    - regime_engine
-    - continuously_invested_trend_baseline
-    - short_term_reversal
-    - relative_value
+    - finalize_product_sessions_and_execution_costs
+    - opening_range_breakout
+    - short_horizon_momentum
+    - intraday_vwap_mean_reversion
+    - multi_day_extreme_return_reversal
     - lead_lag
+    - spread_relative_value
+    - portfolio_allocation_and_walk_forward_validation

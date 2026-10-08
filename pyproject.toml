@@ -32,6 +32,7 @@ dependencies = [
   "scipy>=1.17,<2",
   "statsmodels>=0.14,<0.15",
   "vectorbt>=1,<2",
+  "databento>=0.86.0",
 ]
 
 [project.scripts]
@@ -81,6 +82,7 @@ research-pattern-discovery = "systematic_research.pattern_discovery:main"
 research-instrument-mean-reversion = "systematic_research.instrument_mean_reversion:main"
 research-es-session-reversion = "systematic_research.es_session_reversion:main"
 research-dynamic-states = "systematic_research.dynamic_state_scan:main"
+research-databento-extension = "systematic_research.databento_portfolio_extension:main"
 
 [dependency-groups]
 dev = [

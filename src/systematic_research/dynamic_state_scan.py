@@ -7,6 +7,7 @@ candidate must exceed the probability threshold independently in both halves.
 from __future__ import annotations
 
 import argparse
+from itertools import combinations
 from pathlib import Path
 
 import numpy as np
@@ -64,6 +65,7 @@ def scan(x: pd.DataFrame, components: int) -> pd.DataFrame:
     rows = []
     for h, steps in HORIZONS.items():
         target = np.sign(x.close.shift(-steps) / x.close - 1)
+        first_branch: dict[int, dict[int, float]] = {1: {}, -1: {}}
         for state in range(components):
             for direction, label in [(1, "up"), (-1, "down")]:
                 probs = []
@@ -84,6 +86,45 @@ def scan(x: pd.DataFrame, components: int) -> pd.DataFrame:
                             "first_events": counts[0],
                             "second_events": counts[1],
                             "min_probability": min(probs),
+                        }
+                    )
+                if counts[0] >= 100 and pd.notna(probs[0]):
+                    first_branch[direction][state] = probs[0]
+        # OR discovery: form unions only from first-half branches that each
+        # have at least a 55% same-direction probability. The second half is
+        # held out for validation of the union, not used for selection.
+        for direction, label in [(1, "up"), (-1, "down")]:
+            eligible = [
+                state
+                for state, probability in first_branch[direction].items()
+                if probability >= 0.55
+            ]
+            for union in combinations(eligible, 2):
+                first_values = target[train & x.state.isin(union)].dropna()
+                second_values = target[(~train) & x.state.isin(union)].dropna()
+                first_probability = (
+                    float(first_values.eq(direction).mean()) if len(first_values) else np.nan
+                )
+                second_probability = (
+                    float(second_values.eq(direction).mean()) if len(second_values) else np.nan
+                )
+                if (
+                    len(first_values) >= 100
+                    and len(second_values) >= 100
+                    and first_probability >= 0.66
+                    and second_probability >= 0.66
+                ):
+                    rows.append(
+                        {
+                            "state_count": components,
+                            "state": " OR ".join(map(str, union)),
+                            "horizon": h,
+                            "direction": label,
+                            "first_probability": first_probability,
+                            "second_probability": second_probability,
+                            "first_events": len(first_values),
+                            "second_events": len(second_values),
+                            "min_probability": min(first_probability, second_probability),
                         }
                     )
     return pd.DataFrame(rows)
