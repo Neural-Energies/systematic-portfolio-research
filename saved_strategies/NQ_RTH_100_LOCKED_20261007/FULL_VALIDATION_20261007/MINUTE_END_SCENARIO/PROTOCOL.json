@@ -1,0 +1,86 @@
+{
+  "locked_sha256": "cfe8d4f2b518a339acfaa7a6a4c85f0fb08194bafd3a0862b00fe23afdd6fce8",
+  "daily_entry_requirement": false,
+  "entries": "Same100 locked rules; RTH checks every5m; causal completed features; observed current open used for eligibility",
+  "exit": "Original70%-mean high-minus-open target, past20 same-clock sessions, higher-open conditional IQR; otherwise cash-capped one-hour close; no stop",
+  "scenarios": {
+    "base": [
+      0,
+      25.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "double_cost": [
+      0,
+      50.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "quadruple_cost": [
+      0,
+      100.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "delay_1m": [
+      1,
+      25.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "delay_2m": [
+      2,
+      25.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "penetration_1tick": [
+      0,
+      25.0,
+      0.0,
+      0.0,
+      0.25
+    ],
+    "penetration_4ticks": [
+      0,
+      25.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "slip_1tick": [
+      0,
+      25.0,
+      0.25,
+      0.25,
+      0.0
+    ],
+    "combined_stress": [
+      1,
+      50.0,
+      0.25,
+      0.25,
+      0.25
+    ]
+  },
+  "cost_units": "USD per one NQ contract round trip; slippage and penetration in index points; $20 per point",
+  "holding_extension": "ML pilot retained as separate research; not silently replacing original exits",
+  "simulation_survivor_gates": [
+    "50 resolved trades in each2025 and2026 base period",
+    "No unresolved selected paths in any post-2024 execution scenario",
+    "Positive net PNL and PF>=1.10 in every scenario in both post-2024 periods",
+    "At least10 base trades and positive net profit in every post-2024 calendar quarter (2026Q3 partial)",
+    "Positive fifth-percentile mean daily PNL under five-session block bootstrap (2000 draws)",
+    "Base expectancy exceeds same-time/weekday/year eligible-entry randomized placebos with raw p<=.05 (2000 draws); Holm100-trial diagnostic reported separately"
+  ],
+  "provenance_gate": "Simulation survivors are not institutionally certified. Underlying per-contract volume-roll series and timestamp/exporter semantics are unverified. NQ under Databento folder is same export, not independent vendor replication.2025 and2026 previously used; no fresh blind holdout exists.",
+  "selection_caveat": "Quarter replay of rules fixed by2024 is chronological but selected candidate universe used2025 and previously seen2026. It is not an unbiased new walk-forward strategy-selection test. Neither100-trial Holm nor weekly bootstrap corrects the original ten-million-definition selection.",
+  "random_seed": 20261007,
+  "reference_capital": 100000,
+  "max_drawdown_gate": "No invented capital risk tolerance; risk KPIs reported for decision."
+}

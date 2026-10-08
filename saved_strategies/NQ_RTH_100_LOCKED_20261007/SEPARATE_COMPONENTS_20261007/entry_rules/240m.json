@@ -1,0 +1,52 @@
+{
+  "candidate": "NQ_000054683951",
+  "duration": 240,
+  "rule_family": [
+    {
+      "atom_id": 31,
+      "feature": "ema_distance_2",
+      "family": "trend",
+      "definition": "ema_distance_2 < 0.164084112299; threshold fitted on IS only"
+    },
+    {
+      "atom_id": 880,
+      "feature": "momentum_atr_48",
+      "family": "momentum",
+      "definition": "momentum_atr_48 < 3.10584514905; threshold fitted on IS only"
+    },
+    {
+      "atom_id": 1809,
+      "feature": "es_return_sum_1",
+      "family": "intermarket",
+      "definition": "es_return_sum_1 > 0.000763941977566; threshold fitted on IS only"
+    }
+  ],
+  "execution_thresholds": [
+    {
+      "duration": 240,
+      "atom_id": 31,
+      "feature": "ema_distance_2",
+      "operator": "<",
+      "IS_quantile": 0.7000000000000001,
+      "threshold": 0.2405672972519917
+    },
+    {
+      "duration": 240,
+      "atom_id": 880,
+      "feature": "momentum_atr_48",
+      "operator": "<",
+      "IS_quantile": 0.6,
+      "threshold": 4.371784524815658
+    },
+    {
+      "duration": 240,
+      "atom_id": 1809,
+      "feature": "es_return_sum_1",
+      "operator": ">",
+      "IS_quantile": 0.9,
+      "threshold": 0.0060559437990186
+    }
+  ],
+  "observed_opening_up_gate": true,
+  "RTH_anchor": "09:30Eastern"
+}

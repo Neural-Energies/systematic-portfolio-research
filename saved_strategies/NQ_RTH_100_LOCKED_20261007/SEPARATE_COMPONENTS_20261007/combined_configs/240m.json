@@ -1,0 +1,14 @@
+{
+  "candidate": "NQ_000054683951",
+  "duration": 240,
+  "choices": {
+    "target": "target_q_0.5_x1.0",
+    "MAE_exit": "baseline"
+  },
+  "entry_file": "C:\\Users\\JOSHD\\Documents\\Desktop Organized\\01 Existing Folders\\Systematic Portfolio Research\\Project Workspace\\saved_strategies\\NQ_RTH_100_LOCKED_20261007\\SEPARATE_COMPONENTS_20261007\\entry_rules\\240m.json",
+  "target_file": "C:\\Users\\JOSHD\\Documents\\Desktop Organized\\01 Existing Folders\\Systematic Portfolio Research\\Project Workspace\\saved_strategies\\NQ_RTH_100_LOCKED_20261007\\SEPARATE_COMPONENTS_20261007\\target_models\\240m.joblib",
+  "MAE_exit_file": "C:\\Users\\JOSHD\\Documents\\Desktop Organized\\01 Existing Folders\\Systematic Portfolio Research\\Project Workspace\\saved_strategies\\NQ_RTH_100_LOCKED_20261007\\SEPARATE_COMPONENTS_20261007\\mae_exit_models\\240m.joblib",
+  "trade_size": "One NQ contract",
+  "time_exit": "Matching RTH window, capped at cash close",
+  "development_only": true
+}

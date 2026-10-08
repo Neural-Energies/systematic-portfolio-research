@@ -1,0 +1,52 @@
+{
+  "candidate": "NQ_000502850189",
+  "duration": 15,
+  "rule_family": [
+    {
+      "atom_id": 346,
+      "feature": "momentum_atr_6",
+      "family": "momentum",
+      "definition": "momentum_atr_6 < 2.37991731171; threshold fitted on IS only"
+    },
+    {
+      "atom_id": 1726,
+      "feature": "completed_60m_momentum_3",
+      "family": "mixed_frequency",
+      "definition": "completed_60m_momentum_3 < -0.372495011102; threshold fitted on IS only"
+    },
+    {
+      "atom_id": 1845,
+      "feature": "es_return_sum_6",
+      "family": "intermarket",
+      "definition": "es_return_sum_6 > 0.00217596696471; threshold fitted on IS only"
+    }
+  ],
+  "execution_thresholds": [
+    {
+      "duration": 15,
+      "atom_id": 346,
+      "feature": "momentum_atr_6",
+      "operator": "<",
+      "IS_quantile": 0.9,
+      "threshold": 2.63328683514559
+    },
+    {
+      "duration": 15,
+      "atom_id": 1726,
+      "feature": "completed_60m_momentum_3",
+      "operator": "<",
+      "IS_quantile": 0.3,
+      "threshold": -0.8291235540115667
+    },
+    {
+      "duration": 15,
+      "atom_id": 1845,
+      "feature": "es_return_sum_6",
+      "operator": ">",
+      "IS_quantile": 0.9,
+      "threshold": 0.0039864210753283
+    }
+  ],
+  "observed_opening_up_gate": true,
+  "RTH_anchor": "09:30Eastern"
+}

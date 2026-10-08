@@ -1,0 +1,27 @@
+{
+  "entry_sha256": "cfe8d4f2b518a339acfaa7a6a4c85f0fb08194bafd3a0862b00fe23afdd6fce8",
+  "count": 100,
+  "entry_rules": "Original three atoms, original eligibility, RTH only, one contract and one position per candidate; no changes to entry thresholds. Longer holds suppress later entries.",
+  "exit_only_research": true,
+  "overnight": "Retain position through Globex; no exit forced at 16:00. No stop added.",
+  "maximums": "Both120 elapsed hours and five cash sessions tested; entry session counts as session one, cap at fifth cash-session close. Missing executable quote at deadline makes selected trade unresolved; no late fill beyond cap is invented.",
+  "baseline": "Original target/hour exit plus fixed 60m,4h,24h and 120h holds. Continuation models first evaluated after60m, then every5m.",
+  "cost": 25,
+  "point_value": 20,
+  "training": "2022-2024 only, all-session completed five-minute features; purge forward labels crossing2025. Deterministic training thinning every15m. Validation2025 used to choose exit variant before separate2026 replay.",
+  "model_target": "Future open minus current executable open, divided by causal ATR. Horizon60m or240m. Hold if estimated remaining displacement exceeds threshold; regression values are not calibrated probabilities.",
+  "limits": [
+    "Previously seen2026",
+    "Ten-million-entry selection and correlated candidates",
+    "Volume-roll contract provenance unverified",
+    "Observed-quote preliminary replay; exchange closure and missing-quote calendar not certified",
+    "No overnight roll execution, financing, changing spread or margin simulation",
+    "No guarantee of at least one entry per session"
+  ],
+  "research_sources": [
+    "https://arxiv.org/abs/math/0408276",
+    "https://epubs.siam.org/doi/10.1137/21M1460648"
+  ],
+  "method_note": "Rolling horizon regression is an initial continuation screen, not a claimed implementation of dynamic-programming optimal stopping.",
+  "first_pass_conclusion": "Keep original exits. Pilot did not improve win rates and forecast RMSE did not beat zero-change baseline in2026. Longer-profit result remains preliminary."
+}

@@ -1,0 +1,6 @@
+{
+  "previous_13_survivors": "Provisional and superseded pending clock-end scenario replay",
+  "cause": "Old assumed minute-start execution may be one minute early relative to supplied five-minute-end export",
+  "raw_archived_results_retained": true,
+  "new_source_audit": "NEW_IMPORT_AUDIT/AUDIT.json"
+}

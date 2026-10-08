@@ -1,0 +1,27 @@
+{
+  "status": "preliminary_observed_quote_pilot_complete",
+  "locked100": true,
+  "selected_exit": "ridge_multi_120h",
+  "positive_candidates": 95,
+  "profit_above_original_candidates": 85,
+  "win_rate_above_original_candidates": 0,
+  "median_hold_hours": 3.151327585297685,
+  "median_net_dollars": 49695.0,
+  "median_profit_factor": 1.997641696357587,
+  "unresolved": 1,
+  "median_gap_path_fraction": 0.12838827838827838,
+  "limitations": [
+    "Previously seen2026",
+    "Ten-million-entry selection and correlated candidates",
+    "Volume-roll contract provenance unverified",
+    "Observed-quote preliminary replay; exchange closure and missing-quote calendar not certified",
+    "No overnight roll execution, financing, changing spread or margin simulation",
+    "No guarantee of at least one entry per session"
+  ],
+  "complete_candidate_replays": 99,
+  "positive_complete_candidates": 95,
+  "profit_above_original_complete_candidates": 85,
+  "win_rate_above_original_complete_candidates": 0,
+  "exit_upgrade_accepted": false,
+  "verification": "Four deterministic execution-boundary checks passed;177 existing tests passed. Unchanged baseline40 lint errors,89 type errors,6 formatting files remain. Full calendar/roll/overnight execution verification not complete."
+}

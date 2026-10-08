@@ -1,0 +1,19 @@
+{
+  "prefix_checks": [
+    {
+      "cutoff": "2025-04-15 15:00:00+00:00",
+      "features_checked": 66,
+      "mismatches": 0,
+      "columns_mismatched": []
+    },
+    {
+      "cutoff": "2026-06-15 15:00:00+00:00",
+      "features_checked": 66,
+      "mismatches": 0,
+      "columns_mismatched": []
+    }
+  ],
+  "NQ_observations_after_cutoff_removed": true,
+  "ES_context": "Aligned completed bars at or before truncated NQ availability clock",
+  "scope": "Two boundary spot checks, not an exhaustive formal causality proof"
+}

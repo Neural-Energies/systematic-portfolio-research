@@ -1,0 +1,26 @@
+[
+  {
+    "duration": 15,
+    "training_rows": 9255,
+    "last_training_outcome": "2025-08-13 19:30:00+00:00",
+    "reserved_rows": 0
+  },
+  {
+    "duration": 240,
+    "training_rows": 754,
+    "last_training_outcome": "2025-08-13 17:30:00+00:00",
+    "reserved_rows": 0
+  },
+  {
+    "duration": 5,
+    "training_rows": 27231,
+    "last_training_outcome": "2025-08-13 20:00:00+00:00",
+    "reserved_rows": 0
+  },
+  {
+    "duration": 60,
+    "training_rows": 2549,
+    "last_training_outcome": "2025-08-13 20:00:00+00:00",
+    "reserved_rows": 0
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "corrected_clock_exact_ohlc_preservation": true,
+  "durations": [
+    5,
+    15,
+    60,
+    240
+  ],
+  "metrics_rows": 9696,
+  "screen_rows_excluding_baseline": 800,
+  "unit_tests": 184,
+  "scoped_lint_type_format": "pass",
+  "baseline_lint_errors": 40,
+  "baseline_mypy_errors": 89,
+  "baseline_format_files": 6,
+  "historical_only": true
+}

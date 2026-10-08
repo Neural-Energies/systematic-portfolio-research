@@ -1,0 +1,15 @@
+{
+  "phase": "complete_for_available_historical_inputs",
+  "minimum_one_entry_per_session": false,
+  "simulations": "Historical only; no live feed, paper account or orders",
+  "original_post_gate_survivors": 13,
+  "minute_end_post_gate_survivors": 1,
+  "passed_both_clocks": [
+    "NQ_000748828115"
+  ],
+  "all_period_all_scenario_survivors": 0,
+  "limitations": "Endpoint confirmation pending;2025/2026 previously seen; original ten-million search not fully statistically corrected; per-contract volume-roll provenance unverified",
+  "new_import": "9402 clean5m rows,32 dates afterAugust20; exact new-date scoring lacks corresponding minute/fullsessionNQ and ES history",
+  "raw_data_preserved": true,
+  "original_results_archived_and_qualified": true
+}

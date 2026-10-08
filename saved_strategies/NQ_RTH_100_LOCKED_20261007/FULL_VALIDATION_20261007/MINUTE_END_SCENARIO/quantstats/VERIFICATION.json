@@ -1,0 +1,7 @@
+{
+  "reports": 3,
+  "candidate": "NQ_000748828115",
+  "timestamp_case": "minute_end_sensitivity",
+  "scope": "Native daily return tear sheets with separate individual-trade panel",
+  "all_period_all_scenario_pass": false
+}

@@ -1,0 +1,14 @@
+{
+  "metrics_rows": 3200,
+  "unique_candidates_per_timeframe": 100,
+  "leader_replay_checks": 128,
+  "reserved_rows": 0,
+  "seed": 20261007,
+  "status": "complete",
+  "repository_tests": "191 passed",
+  "baseline_static_failures": "40ruff errors;89mypy errors in11files;6format files,unchanged",
+  "saved_candidate_configs": 312,
+  "browser_preview": "Allfourtimeframes,policyselector,nativepagination,sourceWebMCP,screenshotverified; preservedartifactid",
+  "fold_pnl_reconciled": true,
+  "last_simulated_exit": "2025-08-13 18:40:00+00:00"
+}

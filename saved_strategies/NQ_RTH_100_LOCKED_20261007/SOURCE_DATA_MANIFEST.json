@@ -1,0 +1,26 @@
+{
+  "source": "C:\\Users\\JOSHD\\Documents\\Desktop Organized\\01 Existing Folders\\Systematic Portfolio Research\\Market Data\\NQU6_Export.csv",
+  "sha256": "f68557c84b7c5e27b8161700ebe5af2b059f3dd4922bc78ba4d8000a69e81fe8",
+  "rows": 1344763,
+  "first_utc": "2022-10-12 03:37:00+00:00",
+  "last_utc": "2026-08-20 22:09:00+00:00",
+  "source_timezone": "America/New_York, human confirmed",
+  "calendar": "XNYS cash-session RTH schedule, half-day close respected; excludes cash holidays including Jan 9 2025",
+  "price_kind": "export labeled NQU6 across history, contract/volume-roll provenance not yet verified",
+  "split": "IS through 2024; validation 2025; final confirmation 2026, five-session boundary embargo",
+  "bar_semantics": "assumed start-of-minute export timestamps; verify exporter before live claim",
+  "targets": "past 20 cash sessions same clock, opening_up only, minimum five samples, 1.5 IQR past only",
+  "counts": {
+    "embargo": 780,
+    "final_confirmation": 12012,
+    "in_sample": 43308,
+    "validation": 19002
+  },
+  "eligible_counts": {
+    "embargo": 398,
+    "final_confirmation": 6190,
+    "in_sample": 22312,
+    "validation": 10151
+  },
+  "unresolved_mean70": 0
+}

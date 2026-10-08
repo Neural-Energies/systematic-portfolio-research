@@ -1,0 +1,18 @@
+{
+  "endpoint_confirmation": "pending",
+  "report_url": "http://127.0.0.1:4189/?view=1",
+  "build_status": "complete",
+  "browser_verified": [
+    "2026 minute-end KPI values",
+    "combined2025-2026 KPI values",
+    "survivor filter",
+    "clock selector",
+    "edit and cancel",
+    "normal and430px layout",
+    "corrected QuantStats308trades51020PNL"
+  ],
+  "scoped_tests_passed": 4,
+  "prior_full_suite_passed": 181,
+  "scoped_lint_type_format": "pass",
+  "existing_full_mypy_errors": 89
+}

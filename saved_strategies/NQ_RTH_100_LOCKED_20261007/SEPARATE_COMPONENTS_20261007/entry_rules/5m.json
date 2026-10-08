@@ -1,0 +1,52 @@
+{
+  "candidate": "NQ_001049588361",
+  "duration": 5,
+  "rule_family": [
+    {
+      "atom_id": 1224,
+      "feature": "volume_signed_96",
+      "family": "volume",
+      "definition": "volume_signed_96 < 0.156863155746; threshold fitted on IS only"
+    },
+    {
+      "atom_id": 1268,
+      "feature": "price_z_144",
+      "family": "reversion",
+      "definition": "price_z_144 < -0.644033927706; threshold fitted on IS only"
+    },
+    {
+      "atom_id": 1845,
+      "feature": "es_return_sum_6",
+      "family": "intermarket",
+      "definition": "es_return_sum_6 > 0.00217596696471; threshold fitted on IS only"
+    }
+  ],
+  "execution_thresholds": [
+    {
+      "duration": 5,
+      "atom_id": 1224,
+      "feature": "volume_signed_96",
+      "operator": "<",
+      "IS_quantile": 0.7000000000000001,
+      "threshold": 0.103835412635275
+    },
+    {
+      "duration": 5,
+      "atom_id": 1268,
+      "feature": "price_z_144",
+      "operator": "<",
+      "IS_quantile": 0.2,
+      "threshold": -1.025427800854387
+    },
+    {
+      "duration": 5,
+      "atom_id": 1845,
+      "feature": "es_return_sum_6",
+      "operator": ">",
+      "IS_quantile": 0.9,
+      "threshold": 0.0021649848778819
+    }
+  ],
+  "observed_opening_up_gate": true,
+  "RTH_anchor": "09:30Eastern"
+}

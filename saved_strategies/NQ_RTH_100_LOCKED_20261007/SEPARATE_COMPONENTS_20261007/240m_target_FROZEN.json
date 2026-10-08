@@ -1,0 +1,11 @@
+{
+  "duration": 240,
+  "candidate": "NQ_000054683951",
+  "component": "target",
+  "selected": "target_q_0.5_x1.0",
+  "development_profit": 24750.0,
+  "baseline_profit": 16115.0,
+  "development_dd": 10885.0,
+  "baseline_dd": 9895.0,
+  "selection": "Eachcomponent selected separately; maximumdevelopmentOOSprofit,drawdowntie-break"
+}

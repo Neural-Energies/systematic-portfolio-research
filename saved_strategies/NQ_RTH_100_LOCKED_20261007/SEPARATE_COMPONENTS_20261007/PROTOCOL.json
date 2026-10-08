@@ -1,0 +1,16 @@
+{
+  "lockout_start": "2025-08-21 04:00:00+00:00",
+  "last_permitted_outcome_end_exclusive": "2025-08-14 13:30:00+00:00",
+  "last_complete_development_cash_session": "2025-08-13",
+  "reserved_period": "Original sealed year2025-08-21through2026-08-21; notopened inthis component experiment; previouslyconsumed byearlierresearch so notfresh. New2026Aug22onwardalsoreserved/unscored.",
+  "components": "Entry unchanged; target tested with no stop; MAE exit tested against unchanged mean70target; separately frozen choices onlythencombined",
+  "training": "Expanding all earlier eligible/scorable development rows; fivecashsession boundary embargo for eachfold. Three2025folds. Finalselectedmodels refit on ALLpermitted development rows endingbeforeAugust14 boundary. No latestyearlabels.",
+  "models": "RidgeandExtraTrees log1p excursion/range regression; HistGradientBoosting conditional quantiles. Training-only median imputation andmissingindicator; linear standardized. ATRproxy prior completed14RTHbarEWMA high-low range.",
+  "selection": "Maximum stitcheddevelopmentOOStestprofit; baseline participates; >=80%baseline events and10trades; drawdown tie-break. Target8model/factorvariants plusbaseline. Stop4MLmodels+2historicalquantiles+baseline. No jointgridsearch.",
+  "costs": "1NQcontract$20/point;$25roundtripbase;stress$50plus.25entryandstop/timeexit slippage and.25targetpenetration. No sizingorovernighthold.",
+  "execution": "Buy actual matchingRTHbaropen usingcompleted features andobserved openingup; fixedtargetandstop atentry; targetorMAEstoporwindow/sessionclose. Intraminutedualtouch stopfirst; observedtargetgapfirst; adversegapstopfillsworseopen.",
+  "limitations": "Entryfamilies werealreadyselectedusingpost-cutoffhistory; cannotundo thatcontamination. Thesearedevelopmentcomponent tests,notindependentstrategyvalidation. Rollprovenanceunverified. New5mexport lacksminute/ES/fullGlobexinputs.",
+  "sources": [
+    "https://scikit-learn.org/1.5/auto_examples/ensemble/plot_gradient_boosting_quantile.html"
+  ]
+}

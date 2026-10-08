@@ -1,0 +1,32 @@
+{
+  "frozen_before_new_attachment_read": true,
+  "selected_candidates": [
+    "NQ_001072084796",
+    "NQ_000036419386",
+    "NQ_000750483187",
+    "NQ_001093217712",
+    "NQ_000573223235",
+    "NQ_001088325286",
+    "NQ_001087785195",
+    "NQ_000754524990",
+    "NQ_001060537283",
+    "NQ_000127938869",
+    "NQ_000748828115",
+    "NQ_000502850189",
+    "NQ_001066794576"
+  ],
+  "group_representatives": [
+    "NQ_000036419386",
+    "NQ_000573223235",
+    "NQ_001088325286",
+    "NQ_001087785195",
+    "NQ_000754524990",
+    "NQ_001060537283",
+    "NQ_000127938869",
+    "NQ_000748828115",
+    "NQ_000502850189",
+    "NQ_001066794576"
+  ],
+  "original_locked_sha256": "cfe8d4f2b518a339acfaa7a6a4c85f0fb08194bafd3a0862b00fe23afdd6fce8",
+  "selection": "13 survivors and10 representatives selected using only existing data through2026-08-20; no retuning on new import"
+}

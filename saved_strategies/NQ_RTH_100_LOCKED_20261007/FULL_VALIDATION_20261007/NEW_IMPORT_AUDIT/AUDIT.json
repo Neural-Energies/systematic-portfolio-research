@@ -1,0 +1,19 @@
+{
+  "source_path": "C:\\Users\\JOSHD\\.codex\\attachments\\26d8592f-43fc-4c18-b9a4-8e90de617489\\Pasted text.txt",
+  "source_sha256": "3c140e83f26891fb0222be84a61db04701337a448455dae743af77995f365a49",
+  "input_rows": 9491,
+  "quarantined_broken_rows": 3,
+  "exact_duplicates": 86,
+  "conflicting_timestamp_duplicates": 0,
+  "clean_unique_rows": 9402,
+  "first_naive": "2026-04-23 09:35:00",
+  "last_naive": "2026-10-07 16:15:00",
+  "fresh_rows_after_2026_08_20": 2553,
+  "fresh_dates_after_2026_08_20": 32,
+  "bar_interval": "five-minute bars, cash/daytime only; no minute path or full Globex session supplied",
+  "extra_SESST_RTX_fields": "Retained but not consumed; derived-study semantics unverified",
+  "alignment_result": "Under NY five-minute-end interpretation, shifting old minute labels-1 minute gives6849/6849 exact volumes and relative OHLC. All OHLC prices differ by exactly+297.25 points. No other tested shift matches.",
+  "interpretation": "Strong evidence that old minute export uses minute-end labels. New price rebasing is consistent with a different continuous adjustment; per-contract roll mechanism remains unverified. Human confirmation requested.",
+  "entry_selection": "13 candidates and10 representatives frozen before reading the new file",
+  "new_holdout_scoring": "Pending: all13 depend on ES context, whose existing data endsAugust21; newNQ is5m RTH and cannot reconstruct overnight inputs or exact1m/2m fills. No missing ES values or intrabar order will be fabricated."
+}

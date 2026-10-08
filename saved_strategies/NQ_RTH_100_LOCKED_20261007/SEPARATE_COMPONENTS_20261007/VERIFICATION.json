@@ -1,0 +1,41 @@
+{
+  "status": "completed_development_component_research",
+  "component_selections_separate": true,
+  "reserved_rows_used": 0,
+  "folds": 12,
+  "final_fits": [
+    {
+      "duration": 15,
+      "training_rows": 9255,
+      "last_training_outcome": "2025-08-13 19:30:00+00:00",
+      "reserved_rows": 0
+    },
+    {
+      "duration": 240,
+      "training_rows": 754,
+      "last_training_outcome": "2025-08-13 17:30:00+00:00",
+      "reserved_rows": 0
+    },
+    {
+      "duration": 5,
+      "training_rows": 27231,
+      "last_training_outcome": "2025-08-13 20:00:00+00:00",
+      "reserved_rows": 0
+    },
+    {
+      "duration": 60,
+      "training_rows": 2549,
+      "last_training_outcome": "2025-08-13 20:00:00+00:00",
+      "reserved_rows": 0
+    }
+  ],
+  "tests_passed": 191,
+  "scoped_static_checks": "pass",
+  "existing_full_lint_errors": 40,
+  "existing_full_mypy_errors": 89,
+  "existing_format_files": 6,
+  "sklearn_version": "1.9.0",
+  "preview_url": "http://127.0.0.1:4191/?view=1",
+  "preview_verified": true,
+  "not_live_or_blind_validation": true
+}

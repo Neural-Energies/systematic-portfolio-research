@@ -1,0 +1,10 @@
+{
+  "locked_date_eastern": "2026-10-07",
+  "entries": 100,
+  "sha256": {
+    "LOCKED_ENTRIES.json": "cfe8d4f2b518a339acfaa7a6a4c85f0fb08194bafd3a0862b00fe23afdd6fce8",
+    "PROTOCOL.json": "fea6b16f971b6672a810fa9775c617d91030c9e4711883b7b0a2fcf4f785459a",
+    "ENTRY_CATALOG.csv": "cd92f1170e7e3b6668b4f5640d3e46235bf0818586067fd309cea59cc7d15638"
+  },
+  "research_stage": "Frozen entries; original exits retained; ML extension not promoted"
+}

@@ -1,0 +1,203 @@
+{
+  "candidate": "NQ_000448972026",
+  "duration_minutes": 15,
+  "target_type": "mean70",
+  "status": "paper_candidate",
+  "post_trades": 85.0,
+  "post_net_profit": 9620.0,
+  "post_PF": 1.5630670178519168,
+  "post_win_pct": 77.64705882352942,
+  "post_sharpe": 1.2291630196129828,
+  "minute_DD": 5125.0,
+  "mean_MAE_points": 28.21470588235294,
+  "target_hit_pct": 67.05882352941175,
+  "latest_trades": 33.0,
+  "latest_profit": 2510.0,
+  "latest_PF": 1.3263979193758126,
+  "win_uplift_vs_baseline_pp": 10.691875134358426,
+  "validation_sharpe": 1.605888269519964,
+  "one_tick_profit": 9055.0,
+  "one_tick_PF": 1.5241678726483356,
+  "cost50_profit": 7495.0,
+  "cost50_PF": 1.4268223234624149,
+  "rule_family": {
+    "id": "NQ_000448972026",
+    "definition": [
+      {
+        "atom_id": 302,
+        "feature": "volatility_ratio_3",
+        "family": "volatility",
+        "definition": "volatility_ratio_3 > 0.723119821321; threshold fitted on IS only"
+      },
+      {
+        "atom_id": 345,
+        "feature": "momentum_atr_6",
+        "family": "momentum",
+        "definition": "momentum_atr_6 > 2.37991731171; threshold fitted on IS only"
+      },
+      {
+        "atom_id": 1809,
+        "feature": "es_return_sum_1",
+        "family": "intermarket",
+        "definition": "es_return_sum_1 > 0.000763941977566; threshold fitted on IS only"
+      }
+    ],
+    "is": {
+      "events": 213,
+      "hits": 168,
+      "accuracy": 0.7887323943661971,
+      "tier": "tier_1_70",
+      "percentile70_hits": 108,
+      "full_range70_hits": 93,
+      "mean50_hits": 182,
+      "mean90_hits": 142,
+      "mean100_hits": 133
+    },
+    "validation": {
+      "events": 151,
+      "hits": 121,
+      "accuracy": 0.8013245033112583,
+      "tier": "tier_1_70",
+      "percentile70_hits": 83,
+      "full_range70_hits": 57,
+      "mean50_hits": 132,
+      "mean90_hits": 106,
+      "mean100_hits": 95
+    },
+    "evidence": "adequate_raw_support",
+    "execution_metrics": {
+      "is": {
+        "selected_entries": 194,
+        "unresolved": 0,
+        "observed_net_dollars": 40200.0,
+        "max_closed_trade_drawdown_dollars": 4985.0,
+        "gross_positive_net_dollars": 70550.0,
+        "gross_negative_net_dollars": -30350.0,
+        "full_hour_mae_sum_points": 8871.25,
+        "full_hour_mfe_sum_points": 10617.75,
+        "sessions_with_entry": 127,
+        "candidate_sessions": 538,
+        "mae_observations": 194,
+        "mfe_observations": 194,
+        "mean_full_hour_mae_points": 45.728092783505154,
+        "mean_full_hour_mfe_points": 54.730670103092784,
+        "profit_factor": 2.3245469522240527,
+        "net_win_rate": 0.8350515463917526,
+        "mean_net_dollars": 207.2164948453608,
+        "net_dollars_std": 636.4857887773685,
+        "worst_trade_dollars": -2675.0,
+        "best_trade_dollars": 1205.0,
+        "maximum_full_hour_mae_points": 242.5,
+        "maximum_full_hour_mfe_points": 240.5,
+        "mean_holding_minutes": 23.783505154639176,
+        "nonoverlapping_target_hit_rate": 0.7835051546391752
+      },
+      "validation": {
+        "selected_entries": 135,
+        "unresolved": 0,
+        "observed_net_dollars": 49360.0,
+        "max_closed_trade_drawdown_dollars": 3685.0,
+        "gross_positive_net_dollars": 75680.0,
+        "gross_negative_net_dollars": -26320.0,
+        "full_hour_mae_sum_points": 9511.25,
+        "full_hour_mfe_sum_points": 11477.0,
+        "sessions_with_entry": 87,
+        "candidate_sessions": 245,
+        "mae_observations": 135,
+        "mfe_observations": 135,
+        "mean_full_hour_mae_points": 70.45370370370371,
+        "mean_full_hour_mfe_points": 85.01481481481481,
+        "profit_factor": 2.8753799392097266,
+        "net_win_rate": 0.837037037037037,
+        "mean_net_dollars": 365.6296296296296,
+        "net_dollars_std": 866.280347580139,
+        "worst_trade_dollars": -3685.0,
+        "best_trade_dollars": 1890.0,
+        "maximum_full_hour_mae_points": 927.0,
+        "maximum_full_hour_mfe_points": 643.25,
+        "mean_holding_minutes": 20.57777777777778,
+        "nonoverlapping_target_hit_rate": 0.7925925925925926
+      }
+    },
+    "confirmation": "not_evaluated",
+    "roll_provenance": "unverified",
+    "is_unmatched_uplift": 0.18340790530201645,
+    "validation_unmatched_uplift": 0.22256379008103466,
+    "ordinary_is_accuracy": 0.6053244890641807,
+    "ordinary_validation_accuracy": 0.5787607132302236,
+    "validation_status": "passed_validation"
+  },
+  "execution_thresholds": [
+    {
+      "duration": 15,
+      "atom_id": 302,
+      "feature": "volatility_ratio_3",
+      "operator": ">",
+      "IS_quantile": 0.5,
+      "threshold": 0.6071883041584464
+    },
+    {
+      "duration": 15,
+      "atom_id": 345,
+      "feature": "momentum_atr_6",
+      "operator": ">",
+      "IS_quantile": 0.9,
+      "threshold": 2.63328683514559
+    },
+    {
+      "duration": 15,
+      "atom_id": 1809,
+      "feature": "es_return_sum_1",
+      "operator": ">",
+      "IS_quantile": 0.9,
+      "threshold": 0.0016790195244525
+    }
+  ],
+  "protocol": {
+    "source_clock": "Minute-end export labels normalized once by minus1minute; OHLC unchanged; overlap audit6849exactbars supports correction",
+    "source_label_confirmation": "Exporter endpoint semantics inferred from overlap, not separately vendor-confirmed",
+    "durations_minutes": [
+      5,
+      15,
+      60,
+      240
+    ],
+    "chart_anchor": "09:30America/New_York; half-open windows, partial last bar capped at cash close; half-days respected",
+    "entry": "Buy actual window open, using prior completed chart bars and observed opening-up check; no current bar high/close/volume used as signal",
+    "signals": "100 locked rule families mapped to each matching RTH chart; original feature/operator/quantile rank retained, numeric thresholds refit only on that chart2022-2024; these are new timeframe variants, not exact old100 frozen numeric rules",
+    "opening_up": "Current interval open > previous completed RTH interval open, including previous-session final bar at09:30",
+    "targets": [
+      "70% of prior20same-clock conditional IQR-trimmed mean high-open",
+      "70th percentile of that same historical distribution"
+    ],
+    "exit": "No stop; target or final minute close at duration/session end",
+    "scenarios": {
+      "base": [
+        0,
+        25.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "one_tick": [
+        0,
+        25.0,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "cost50": [
+        0,
+        50.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "cost_units": "USD per1NQcontract;$20/indexpoint",
+    "paper_candidate_screen": "30resolved post2024trades; combinedPF>=1.05; combinedprofit>0; combinednetwin>=53%; latest2026profit>0 andPF>1; no unresolved selected paths. No dailyminimum, quarter-profit requirement or severe-stress gate.",
+    "limitations": "Previouslyseen2025/2026;10moriginalselection bias and400timeframevariants; no live performance; volume-rollprovenanceunverified; fresh5minimportnot scored without matchingES/minute inputs; no stop or sizing model",
+    "locked_rule_sha256": "cfe8d4f2b518a339acfaa7a6a4c85f0fb08194bafd3a0862b00fe23afdd6fce8"
+  },
+  "identity": "NQ_000448972026_15m_mean70"
+}

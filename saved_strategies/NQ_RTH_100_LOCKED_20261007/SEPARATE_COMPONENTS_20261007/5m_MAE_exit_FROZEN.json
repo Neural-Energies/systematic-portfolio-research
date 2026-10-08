@@ -1,0 +1,11 @@
+{
+  "duration": 5,
+  "candidate": "NQ_001049588361",
+  "component": "MAE_exit",
+  "selected": "stop_ridge",
+  "development_profit": -3675.0,
+  "baseline_profit": -9180.0,
+  "development_dd": 5695.0,
+  "baseline_dd": 12962.5,
+  "selection": "Eachcomponent selected separately; maximumdevelopmentOOSprofit,drawdowntie-break"
+}

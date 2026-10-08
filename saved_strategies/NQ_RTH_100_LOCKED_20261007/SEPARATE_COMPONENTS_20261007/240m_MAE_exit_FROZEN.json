@@ -1,0 +1,11 @@
+{
+  "duration": 240,
+  "candidate": "NQ_000054683951",
+  "component": "MAE_exit",
+  "selected": "baseline",
+  "development_profit": 16115.0,
+  "baseline_profit": 16115.0,
+  "development_dd": 9895.0,
+  "baseline_dd": 9895.0,
+  "selection": "Eachcomponent selected separately; maximumdevelopmentOOSprofit,drawdowntie-break"
+}

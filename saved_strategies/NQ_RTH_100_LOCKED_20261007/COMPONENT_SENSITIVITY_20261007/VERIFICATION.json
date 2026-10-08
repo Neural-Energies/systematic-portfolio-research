@@ -1,0 +1,15 @@
+{
+  "status": "complete",
+  "replays": 12000,
+  "comparison_rows": 6000,
+  "baseline_frozen_replay_kpi_checks": 6400,
+  "reserved_rows": 0,
+  "automatic_promotion": false,
+  "fold_pnl_reconciliation": true,
+  "repository_tests": "191passed",
+  "baseline_static_failures": "40rufferrors,89mypyerrorsin11files,6formatfiles;unchanged",
+  "configs_folder": "cases",
+  "saved_research_configs": 1198,
+  "browser_preview": "Fourtimeframes,risk/targetcontrols,sourceWebMCPforecastrows,pagination,andrenderedscreenshotverified; existingartifactidentitypreserved",
+  "report_url": "http://127.0.0.1:4191/?view=1"
+}

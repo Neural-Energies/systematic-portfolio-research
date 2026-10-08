@@ -1,0 +1,6 @@
+{
+  "effective_date_eastern": "2026-10-07",
+  "minimum_one_entry_per_session": false,
+  "scope": "Simulate trading using existing data; no live paper account requested",
+  "entries_frozen": 100
+}

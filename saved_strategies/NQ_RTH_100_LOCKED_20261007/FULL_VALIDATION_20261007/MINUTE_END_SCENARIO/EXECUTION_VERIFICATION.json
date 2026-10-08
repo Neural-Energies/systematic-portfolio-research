@@ -1,0 +1,6 @@
+{
+  "all300_base_period_results_reconciled": false,
+  "reason": "New clock-end scenario compared separately with archived original clock results; all original numeric thresholds remain fixed",
+  "independent_slow_minute_engine_cases": 6,
+  "passed": true
+}

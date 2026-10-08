@@ -1,0 +1,46 @@
+{
+  "source_clock": "Minute-end export labels normalized once by minus1minute; OHLC unchanged; overlap audit6849exactbars supports correction",
+  "source_label_confirmation": "Exporter endpoint semantics inferred from overlap, not separately vendor-confirmed",
+  "durations_minutes": [
+    5,
+    15,
+    60,
+    240
+  ],
+  "chart_anchor": "09:30America/New_York; half-open windows, partial last bar capped at cash close; half-days respected",
+  "entry": "Buy actual window open, using prior completed chart bars and observed opening-up check; no current bar high/close/volume used as signal",
+  "signals": "100 locked rule families mapped to each matching RTH chart; original feature/operator/quantile rank retained, numeric thresholds refit only on that chart2022-2024; these are new timeframe variants, not exact old100 frozen numeric rules",
+  "opening_up": "Current interval open > previous completed RTH interval open, including previous-session final bar at09:30",
+  "targets": [
+    "70% of prior20same-clock conditional IQR-trimmed mean high-open",
+    "70th percentile of that same historical distribution"
+  ],
+  "exit": "No stop; target or final minute close at duration/session end",
+  "scenarios": {
+    "base": [
+      0,
+      25.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "one_tick": [
+      0,
+      25.0,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "cost50": [
+      0,
+      50.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "cost_units": "USD per1NQcontract;$20/indexpoint",
+  "paper_candidate_screen": "30resolved post2024trades; combinedPF>=1.05; combinedprofit>0; combinednetwin>=53%; latest2026profit>0 andPF>1; no unresolved selected paths. No dailyminimum, quarter-profit requirement or severe-stress gate.",
+  "limitations": "Previouslyseen2025/2026;10moriginalselection bias and400timeframevariants; no live performance; volume-rollprovenanceunverified; fresh5minimportnot scored without matchingES/minute inputs; no stop or sizing model",
+  "locked_rule_sha256": "cfe8d4f2b518a339acfaa7a6a4c85f0fb08194bafd3a0862b00fe23afdd6fce8"
+}
