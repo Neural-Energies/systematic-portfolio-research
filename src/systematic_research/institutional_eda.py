@@ -23,6 +23,8 @@ from scipy import stats
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.stattools import adfuller, coint
 
+from systematic_research.research_partitions import guard_research_sample
+
 HORIZONS: dict[str, str] = {
     "15m": "15min",
     "30m": "30min",
@@ -57,6 +59,7 @@ def load_development_bars(data_root: Path) -> pd.DataFrame:
     bars = pd.concat(frames, ignore_index=True)
     bars["timestamp_utc"] = pd.to_datetime(bars["timestamp_utc"], utc=True)
     bars["trading_date"] = pd.to_datetime(bars["trading_date"])
+    guard_research_sample(pd.DatetimeIndex(bars["timestamp_utc"]), "fit")
     bars = bars.sort_values(["symbol", "timestamp_utc"], kind="stable").reset_index(drop=True)
     if forbidden.exists() and any("sealed_holdout" in str(path) for path in paths):
         raise RuntimeError("Sealed holdout path appeared in development input list.")

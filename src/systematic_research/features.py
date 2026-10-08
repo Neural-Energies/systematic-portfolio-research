@@ -17,6 +17,7 @@ from systematic_research.market_structure import (
     build_market_structure_features,
     build_tape_pace_features,
 )
+from systematic_research.research_partitions import guard_frame
 from systematic_research.temporal_validation import load_development_panel
 
 FEATURE_FAMILIES = {
@@ -314,6 +315,7 @@ def write_development_features(
     if not minute_paths:
         raise FileNotFoundError("No development minute-return partitions were found")
     minute_returns = pd.concat((pd.read_parquet(path) for path in minute_paths), ignore_index=True)
+    guard_frame(minute_returns, "fit")
     realized_measures = build_daily_realized_measures(minute_returns)
     tape_pace = build_tape_pace_features(minute_returns)
     features = features.merge(

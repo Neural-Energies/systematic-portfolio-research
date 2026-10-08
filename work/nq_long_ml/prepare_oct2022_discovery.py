@@ -7,6 +7,7 @@ from experiment import aggregate
 from systematic_research.fixed_hold import fixed_hold_outcomes
 from systematic_research.clock_excursion import same_clock_history
 from systematic_research.auction_entry import entry_path_diagnostics
+from systematic_research.research_partitions import nq_calendar_split
 
 root=Path('data/processed/nq_entry_discovery_202210')
 root.mkdir(parents=True,exist_ok=True)
@@ -44,7 +45,7 @@ hr=same_clock_history(fr,sessions)
 f['full_range70_points']=np.ceil(hr.mean70*4)/4
 f['retained_history_samples']=h.retained_samples
 f['eligible']=f.opening_up&f.target_points.gt(0)&f.entry_open.notna()
-f['split']=np.where(local.year<=2024,'in_sample',np.where(local.year==2025,'validation','final_confirmation'))
+f['split']=nq_calendar_split(f.index)
 # Five complete cash sessions after each boundary are embargoed.
 embargo=[]
 for year in [2025,2026]:

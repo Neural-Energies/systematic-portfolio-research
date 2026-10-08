@@ -21,6 +21,8 @@ import databento as db
 import numpy as np
 import pandas as pd
 
+from systematic_research.research_partitions import guard_research_sample
+
 ROOTS = ("ZB", "SR3", "ZF", "ZT", "RTY", "ZW", "ZS", "LE")
 MONTH_CODES = "FGHJKMNQUVXZ"
 ASSET_CLUSTERS = {
@@ -285,6 +287,7 @@ def evaluate_portfolio_extension(
     added.index = pd.to_datetime(added.index)
     combined = existing.join(added, how="inner").sort_index()
     combined = combined.dropna(axis=0, how="any")
+    guard_research_sample(pd.DatetimeIndex(pd.to_datetime(combined.index)), "fit")
     if len(combined) < 60:
         raise ValueError("Fewer than 60 complete overlapping daily observations")
 

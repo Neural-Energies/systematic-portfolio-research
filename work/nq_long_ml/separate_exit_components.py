@@ -13,7 +13,7 @@ from sklearn.metrics import mean_absolute_error,mean_squared_error,mean_pinball_
 from systematic_research.mae_brackets import bracket_outcomes
 from systematic_research.execution_stress import schedule_events,marked_drawdowns
 from systematic_research.trade_report_metrics import trade_kpis
-from systematic_research.research_partitions import purged_training_rows,require_before_lockout
+from systematic_research.research_partitions import guard_research_sample,purged_training_rows,require_before_lockout
 
 OUT=Path('saved_strategies/NQ_RTH_100_LOCKED_20261007/SEPARATE_COMPONENTS_20261007');OUT.mkdir(exist_ok=True)
 LOCKOUT=pd.Timestamp('2025-08-21',tz='America/New_York').tz_convert('UTC')
@@ -42,6 +42,7 @@ def make_model(label,name):
 
 def research(duration,m,f,b,features,signals):
     cid=LEADERS[duration];print('COMPONENT_START',duration,cid,flush=True)
+    guard_research_sample(f.index,'selection')
     require_before_lockout(m.index,LOCKOUT);require_before_lockout(f.index,LOCKOUT)
     assert pd.DatetimeIndex(f.planned_exit).max()<=LABEL_END
     session_clock=pd.DatetimeIndex(schedule.open)
@@ -62,6 +63,7 @@ def research(duration,m,f,b,features,signals):
         for label,names in model_names.items():
             for name in names:
                 model=make_model(label,name);log=name in ['ridge','extra_trees'];values=y[label][train]
+                guard_research_sample(f.index[train],'fit')
                 model.fit(x.loc[train],np.log1p(values) if log else values)
                 raw=model.predict(x.loc[test]);normalized=np.expm1(np.clip(raw,0,10)) if log else np.maximum(raw,0)
                 points=np.ceil(np.maximum(normalized*scale[test].to_numpy(),.25)*4)/4;pred[(label,name)][test]=points
@@ -122,7 +124,9 @@ def research(duration,m,f,b,features,signals):
         if winner.startswith('stop_historical'):
             q=float(winner.split('_')[-1]);package['models'][component]={'historical_MAE_normalized_quantile':float(y['MAE'][final_train].quantile(q))};continue
         name=winner.removeprefix('target_').split('_x')[0] if component=='target' else winner.removeprefix('stop_')
-        model=make_model(label,name);log=name in ['ridge','extra_trees'];values=y[label][final_train];model.fit(x.loc[final_train],np.log1p(values) if log else values)
+        model=make_model(label,name);log=name in ['ridge','extra_trees'];values=y[label][final_train]
+        guard_research_sample(f.index[final_train],'fit')
+        model.fit(x.loc[final_train],np.log1p(values) if log else values)
         package['models'][component]={'model':model,'name':name,'log_label':log,'factor':float(winner.split('_x')[-1]) if component=='target' else 1.}
     joblib.dump(package,OUT/f'{duration}m_COMPONENT_MODELS.joblib',compress=3)
     pd.DataFrame(metrics).drop_duplicates(['duration','variant','stress']).to_csv(OUT/'BACKTEST_COMPARISONS.csv',index=False);pd.DataFrame(errors).to_csv(OUT/'FORECAST_ERRORS.csv',index=False);pd.DataFrame(fold_audit).to_csv(OUT/'FOLD_INPUT_AUDIT.csv',index=False)

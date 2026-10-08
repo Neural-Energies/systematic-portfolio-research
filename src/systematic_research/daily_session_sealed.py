@@ -19,6 +19,7 @@ from systematic_research.daily_session_factory import (
     session_panels,
     vectorbt_replay,
 )
+from systematic_research.research_partitions import guard_frame
 from systematic_research.saved_strategy_runner import performance_snapshot
 
 FACTORY_ROOT = Path("data/processed/daily_session_factory")
@@ -167,6 +168,7 @@ def evaluate_sealed_once(project_root: Path) -> Path:
     combined["session_open_utc"] = pd.to_datetime(combined["session_open_utc"], utc=True)
     combined["session_close_utc"] = pd.to_datetime(combined["session_close_utc"], utc=True)
     combined = combined.sort_values(["symbol", "trading_date"], ignore_index=True)
+    guard_frame(combined, "evaluation")
     panels = session_panels(combined)
     scores = score_panels(panels["session_return"])
     specs = [DailySessionSpec(**raw) for raw in definition["strategy_specs"]]

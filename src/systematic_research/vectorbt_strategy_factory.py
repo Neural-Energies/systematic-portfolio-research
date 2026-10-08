@@ -19,6 +19,7 @@ from pypfopt.risk_models import fix_nonpositive_semidefinite  # type: ignore[imp
 
 from systematic_research.broad_strategy_search import _write_quantstats_report
 from systematic_research.intraday_strategy_search import _panels, resample_bars
+from systematic_research.research_partitions import guard_research_sample
 from systematic_research.saved_strategy_runner import performance_snapshot
 from systematic_research.strategy_factory import (
     ProductStrategy,
@@ -47,6 +48,7 @@ def load_development_minutes(project_root: Path) -> tuple[pd.DataFrame, list[Pat
         raise ValueError(f"all Databento development partitions are empty under {root}")
     minute_data = pd.concat(pieces, ignore_index=True)
     minute_data["timestamp_utc"] = pd.to_datetime(minute_data["timestamp_utc"], utc=True)
+    guard_research_sample(pd.DatetimeIndex(minute_data["timestamp_utc"]), "fit")
     return minute_data, paths
 
 

@@ -31,6 +31,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import LinearSVC
 from statsmodels.tsa.arima.model import ARIMA
 
+from systematic_research.research_partitions import guard_research_sample
+
 ROOT = Path(__file__).resolve().parents[2]
 START = pd.Timestamp("2023-08-22", tz="UTC")
 END = pd.Timestamp("2025-08-16", tz="UTC")
@@ -57,7 +59,12 @@ def load_minutes(symbol: str) -> pd.DataFrame:
         raise ValueError(f"{symbol}: nonpositive price")
     if not ts.between(START, END, inclusive="left").all():
         raise ValueError("Development boundary violated")
-    return frame.set_index("timestamp_utc")
+    frame = frame.set_index("timestamp_utc")
+    stamps = pd.DatetimeIndex(frame.index)
+    if stamps.tz is None:
+        stamps = stamps.tz_localize("UTC")
+    guard_research_sample(stamps, "fit")
+    return frame
 
 
 def aggregate(minutes: pd.DataFrame, horizon: int) -> pd.DataFrame:

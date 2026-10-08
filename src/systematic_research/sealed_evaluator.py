@@ -21,6 +21,7 @@ from systematic_research.intraday_strategy_search import (
     resample_bars,
     simulate,
 )
+from systematic_research.research_partitions import guard_frames
 from systematic_research.saved_strategy_runner import _spec_from_component, performance_snapshot
 from systematic_research.trend import construct_target_weights, simulate_with_drawdown_controls
 
@@ -155,6 +156,10 @@ def run_once(project_root: Path) -> Path:
     holdout_panel = pd.read_parquet(session_root / "sealed_holdout_session_panel.parquet")
     development_minutes = _load_minute_partitions(minute_root / "development_minute_returns")
     holdout_minutes = _load_minute_partitions(minute_root / "sealed_holdout_minute_returns")
+    guard_frames(
+        [development_panel, holdout_panel, development_minutes, holdout_minutes],
+        "evaluation",
+    )
 
     session_development, session_holdout = _session_sleeve(
         development_panel, holdout_panel, baseline_candidate

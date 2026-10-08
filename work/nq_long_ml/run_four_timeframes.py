@@ -11,6 +11,7 @@ from systematic_research.fixed_hold import fixed_hold_outcomes
 from systematic_research.clock_excursion import same_clock_history
 from systematic_research.execution_stress import minute_outcomes,schedule_events,marked_drawdowns
 from systematic_research.trade_report_metrics import trade_kpis
+from systematic_research.research_partitions import guard_research_sample,nq_calendar_split
 sys.path.insert(0,str(Path('work/nq_long_ml').resolve()))
 from experiment import aggregate
 
@@ -57,7 +58,7 @@ for duration in [5,15,60,240]:
     history=same_clock_history(f,pd.DatetimeIndex(schedule.open))
     f['target_points']=np.ceil(history.mean70*4)/4;f['percentile70_points']=np.ceil(history.q70*4)/4
     f['eligible']=f.opening_up&f.target_points.gt(0)&f.entry_open.notna()
-    f['split']=np.where(local.year<=2024,'in_sample',np.where(local.year==2025,'validation','final_confirmation'))
+    f['split']=nq_calendar_split(f.index)
     embargo=[]
     for year in [2025,2026]:embargo+=schedule[schedule.index.year==year].head(5).open.tolist()
     f.loc[f.anchor.isin(embargo),'split']='embargo'
@@ -71,6 +72,7 @@ for duration in [5,15,60,240]:
     if profiles is None:profiles=namespace['prof']
     features=pd.DataFrame(namespace['features'],index=f.index)
     train=f.split.eq('in_sample')&f.eligible
+    guard_research_sample(f.index[train],'threshold')
     masks={}
     for a in atoms.itertuples():
         threshold=features.loc[train,a.feature].replace([np.inf,-np.inf],np.nan).dropna().quantile(quantiles[a.atom_id])

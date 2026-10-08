@@ -197,6 +197,27 @@ Combined full-history research panels are deleted after splitting. Minute and se
 stored in separate development and sealed-holdout locations; ordinary research access defaults to
 development only. Raw and canonical layers retain full provenance but are not strategy APIs.
 
+## Forward holdout after 7 October 2026
+
+`config/research_splits.yaml` is the shared calendar for this research program.
+
+Discovery, or train, is 2022 through 2024. That is the window the frozen 100 entry rules were
+actually fit on. Validation is calendar 2025. It was already used to choose candidates and to tune
+exits, so it is not a fresh test. Contaminated 2026 runs from 1 January 2026 through 7 October 2026
+inclusive. Those bars were previously seen. They are not a holdout.
+
+The forward holdout is every bar strictly after 7 October 2026. It stays sealed. Fitting,
+selection, ranking, threshold, and tuning code raises if it reads one of those timestamps. Scoring
+that sealed sample is allowed only after `unlock_forward_holdout()`. That function writes one
+ledger row under `research_program/forward_holdout_ledger.json` with the time, a hash of the frozen
+candidate file, and the code commit. A second unlock is refused, and the evaluation that follows
+can be used once. Fitting stays blocked after the unlock.
+
+The older sealed year that ends in August 2026 was already opened. It is not this forward holdout.
+
+Whether an exported bar timestamp means the start of the minute or the end of the minute is still
+pending human confirmation. Do not treat either convention as settled.
+
 ## Quantitative feature layer
 
 `uv run research-features` reads only the guarded development session panel and development

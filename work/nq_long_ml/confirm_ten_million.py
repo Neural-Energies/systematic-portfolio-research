@@ -4,10 +4,12 @@ import heapq,json,zipfile
 import numpy as np
 import pandas as pd
 from systematic_research.reference_backtest import backtest_reference
+from systematic_research.research_partitions import guard_research_sample
 
 R=Path('work/nq_long_ml/ten_million_entry_search');P=Path('data/processed/nq_entry_discovery_202210')
 state=json.loads((R/'progress.json').read_text())
 if state['definitions_tested']!=10_000_000:raise RuntimeError('Discovery must finish before final confirmation')
+guard_research_sample(pd.read_parquet(P/'opportunities.parquet',columns=['split']).index,'ranking')
 final=R/'final_confirmation';final.mkdir(exist_ok=True)
 heap=[];examined=0
 for archive in sorted(R.glob('batch_*.zip')):

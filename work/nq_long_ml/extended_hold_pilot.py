@@ -13,6 +13,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error,mean_squared_error
 from numba import njit
+from systematic_research.research_partitions import guard_research_sample
 
 P=Path('data/processed/nq_entry_discovery_202210')
 S=Path('work/nq_long_ml/ten_million_entry_search/final_confirmation')
@@ -80,6 +81,7 @@ for horizon in [60,240]:
             pred=np.load(cache)
             if len(pred)!=len(b):raise RuntimeError('Prediction cache length mismatch')
         else:
+            guard_research_sample(t[fit],'fit')
             model.fit(X[fit],y[fit]);pred=model.predict(X);pred[~available]=np.nan
             np.save(cache,pred)
         predictions[(name,horizon)]=pred

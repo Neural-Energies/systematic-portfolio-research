@@ -11,6 +11,7 @@ from scipy.stats import norm
 from systematic_research.execution_stress import minute_outcomes,schedule_events,marked_drawdowns
 from systematic_research.trade_report_metrics import trade_kpis
 from systematic_research.reference_backtest import backtest_reference
+from systematic_research.research_partitions import guard_research_sample
 
 P=Path('data/processed/nq_entry_discovery_202210');L=Path('saved_strategies/NQ_RTH_100_LOCKED_20261007')
 O=L/'FULL_VALIDATION_20261007';O.mkdir(exist_ok=True)
@@ -36,6 +37,7 @@ for date,s in schedule.iterrows():
     coverage.append({'session':str(date.date()),'rows':int(n),'expected':expected,'missing':expected-int(n)})
 pd.DataFrame(coverage).to_csv(O/'rth_minute_coverage.csv',index=False)
 needed=sorted({q['atom_id'] for item in short for q in item['definition']});registry=pd.read_csv(P/'atoms.csv').set_index('atom_id');train=f.split.eq('in_sample')&f.eligible
+guard_research_sample(f.index[train],'threshold')
 recovered=[];bitmismatches=[]
 for atom in needed:
     definition=registry.loc[atom,'definition'];field,operator,value=definition.split(';')[0].split();printed=float(value);values=features.loc[train,field].dropna().replace([np.inf,-np.inf],np.nan).dropna().quantile(np.arange(.1,1,.1)).to_numpy()

@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 from numba import set_num_threads
 from systematic_research.entry_discovery_search import screen_rules,unrank_triples,execution_metrics,hit_tier
+from systematic_research.research_partitions import guard_research_sample
 
 P=Path('data/processed/nq_entry_discovery_202210')
 ROOT=Path('work/nq_long_ml/ten_million_entry_search')
@@ -26,6 +27,7 @@ def run(target=10_000_000,batch_size=2000):
     if frozen.exists() and json.loads(frozen.read_text())!=fingerprints:raise ValueError('Frozen input fingerprint mismatch; use a new research run folder')
     frozen.write_text(json.dumps(fingerprints,indent=2))
     f=pd.read_parquet(P/'opportunities.parquet')
+    guard_research_sample(f.index,'selection')
     atoms=np.load(P/'atom_bits.npy',mmap_mode='r')
     registry=pd.read_csv(P/'atoms.csv')
     groups=pd.factorize(registry.feature)[0].astype(np.int64)

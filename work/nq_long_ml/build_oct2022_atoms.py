@@ -5,6 +5,7 @@ import pandas as pd
 from experiment import aggregate
 from rth_named_setups import indicators
 from systematic_research.auction_entry import profile_histogram,profile_levels
+from systematic_research.research_partitions import guard_research_sample
 
 R=Path('data/processed/nq_entry_discovery_202210')
 f=pd.read_parquet(R/'opportunities.parquet');m=pd.read_parquet(R/'minutes.parquet');b=pd.read_parquet(R/'completed_5min.parquet')
@@ -77,6 +78,7 @@ if espaths:
     add('es_adjusted_residual',(nqret-beta*er)/nqret.rolling(48).std().replace(0,np.nan),'intermarket')
     for w in [1,3,6,12]:add(f'es_return_sum_{w}',er.rolling(w).sum(),'intermarket')
 train=f.split.eq('in_sample')&f.eligible
+guard_research_sample(f.index[train],'threshold')
 eligible=f.eligible.to_numpy(bool)
 columns=[];registry=[];seen=set()
 def atom(name,family,value,definition):

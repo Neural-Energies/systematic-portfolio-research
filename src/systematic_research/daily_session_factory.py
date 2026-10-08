@@ -17,6 +17,7 @@ from pypfopt import HRPOpt  # type: ignore[import-untyped]
 
 from systematic_research.broad_strategy_search import _write_quantstats_report
 from systematic_research.metrics import sharpe_ratio
+from systematic_research.research_partitions import guard_research_sample
 from systematic_research.saved_strategy_runner import performance_snapshot
 from systematic_research.strategy_factory import ResearchWindows, _metrics, make_research_windows
 
@@ -42,6 +43,7 @@ def load_development_panel(project_root: Path) -> pd.DataFrame:
     frame["trading_date"] = pd.to_datetime(frame["trading_date"])
     frame["session_open_utc"] = pd.to_datetime(frame["session_open_utc"], utc=True)
     frame["session_close_utc"] = pd.to_datetime(frame["session_close_utc"], utc=True)
+    guard_research_sample(pd.DatetimeIndex(frame["trading_date"]), "fit")
     return frame.sort_values(["symbol", "trading_date"], ignore_index=True)
 
 

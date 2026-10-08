@@ -9,6 +9,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from systematic_research.research_partitions import guard_frame
+
 
 @dataclass(frozen=True)
 class SplitPolicy:
@@ -137,7 +139,9 @@ def seal_minute_partitions(output_root: Path, boundaries: SplitBoundaries) -> No
 
 def load_development_panel(path: Path = Path("data/processed/research")) -> pd.DataFrame:
     """Default research accessor; it cannot return sealed evaluation observations."""
-    return pd.read_parquet(path / "development_session_panel.parquet")
+    frame = pd.read_parquet(path / "development_session_panel.parquet")
+    guard_frame(frame, "fit")
+    return frame
 
 
 def load_sealed_holdout(
@@ -146,4 +150,6 @@ def load_sealed_holdout(
     """Allow holdout access only to the future sequential evaluation engine."""
     if not sequential_evaluator:
         raise PermissionError("Sealed holdout is unavailable to strategy-development code")
-    return pd.read_parquet(path / "sealed_holdout_session_panel.parquet")
+    frame = pd.read_parquet(path / "sealed_holdout_session_panel.parquet")
+    guard_frame(frame, "evaluation")
+    return frame

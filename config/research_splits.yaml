@@ -1,0 +1,25 @@
+# Shared NQ research partitions. Loaders and the forward-holdout guard read this file.
+# Calendar dates use America/New_York. A bar belongs to the date of its timestamp in that zone.
+# Minute-start versus minute-end labeling is still pending human confirmation.
+
+timezone: America/New_York
+embargo_cash_sessions: 5
+bar_timestamp_convention: pending_human_confirmation
+frozen_entries: saved_strategies/NQ_RTH_100_LOCKED_20261007/LOCKED_ENTRIES.json
+
+partitions:
+  discovery:
+    start: 2022-01-01
+    end: 2024-12-31
+    role: train
+  validation:
+    start: 2025-01-01
+    end: 2025-12-31
+    already_used_for_selection_and_exit_tuning: true
+  contaminated_2026:
+    start: 2026-01-01
+    end: 2026-10-07
+    usable_as_holdout: false
+  forward_holdout:
+    strictly_after: 2026-10-07
+    sealed: true

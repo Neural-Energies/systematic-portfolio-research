@@ -23,6 +23,7 @@ from scipy.stats import ttest_1samp
 from statsmodels.tsa.stattools import coint  # type: ignore[import-untyped]
 
 from systematic_research.metrics import maximum_drawdown, sharpe_ratio
+from systematic_research.research_partitions import guard_research_sample
 
 DEVELOPMENT_ROOT = Path("data/processed/databento_research/development_minute_returns")
 
@@ -100,6 +101,10 @@ def load_returns(symbol: str, bar_minutes: int) -> pd.Series:
     if not path.exists():
         raise FileNotFoundError(path)
     frame = pd.read_parquet(path).set_index("timestamp_utc").sort_index()
+    stamps = pd.DatetimeIndex(frame.index)
+    if stamps.tz is None:
+        stamps = stamps.tz_localize("UTC")
+    guard_research_sample(stamps, "selection")
     return (
         frame["close"]
         .resample(f"{bar_minutes}min")
