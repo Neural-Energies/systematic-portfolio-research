@@ -1,0 +1,38 @@
+Crumb fetch rate-limited (HTTP 429), continuing without crumb
+130 monthly trades, 2016-01 to 2026-10 (last month partial, to 2026-10-13)
+| Variant                 | End $ (to 2026-10-13)   | CAGR   | Vol (ann.)   |   Sharpe | Max DD (daily)   | Worst month   | Best month   | Up months   | Beat SPY   |
+|:------------------------|:------------------------|:-------|:-------------|---------:|:-----------------|:--------------|:-------------|:------------|:-----------|
+| open-entry, 0bps/side   | $360                    | +12.6% | 42.5%        |     0.49 | -61.6%           | -40.7%        | +45.8%       | 63%         | 48%        |
+| open-entry, 10bps/side  | $278                    | +10.0% | 42.4%        |     0.43 | -61.9%           | -40.8%        | +45.5%       | 61%         | 47%        |
+| open-entry, 50bps/side  | $98                     | -0.2%  | 42.1%        |     0.2  | -71.8%           | -41.3%        | +44.3%       | 57%         | 43%        |
+| close-entry, 0bps/side  | $341                    | +12.0% | 43.2%        |     0.48 | -61.6%           | -41.0%        | +41.9%       | 62%         | 47%        |
+| close-entry, 10bps/side | $263                    | +9.4%  | 43.2%        |     0.42 | -61.9%           | -41.2%        | +41.6%       | 60%         | 45%        |
+| close-entry, 50bps/side | $93                     | -0.7%  | 42.8%        |     0.2  | -71.9%           | -41.6%        | +40.5%       | 55%         | 43%        |
+SPY (same months, open->close): $407 | QQQ: $643  [SPY/QQQ by compounding the same monthly windows]
+
+By calendar year (open-entry, 10bps):
+|   year | strategy   | SPY    | QQQ    | worst month   | months beating SPY   |
+|-------:|:-----------|:-------|:-------|:--------------|:---------------------|
+|   2016 | +14.9%     | +14.3% | +9.6%  | -16.8%        | 5/12                 |
+|   2017 | +20.5%     | +17.8% | +28.1% | -4.6%         | 7/12                 |
+|   2018 | -33.9%     | -6.3%  | -1.3%  | -40.8%        | 5/12                 |
+|   2019 | +18.4%     | +28.9% | +36.6% | -23.5%        | 6/12                 |
+|   2020 | +10.2%     | +18.5% | +45.1% | -14.3%        | 6/12                 |
+|   2021 | +14.1%     | +19.8% | +18.5% | -7.9%         | 5/12                 |
+|   2022 | -22.3%     | -19.7% | -33.4% | -17.3%        | 4/12                 |
+|   2023 | +46.2%     | +26.3% | +54.4% | -7.3%         | 6/12                 |
+|   2024 | +60.1%     | +24.0% | +24.7% | -17.7%        | 6/12                 |
+|   2025 | -30.3%     | +21.5% | +24.5% | -19.2%        | 4/12                 |
+|   2026 | +61.1%     | +15.4% | +23.7% | -24.2%        | 7/10                 |
+
+Best 5 months: [('2016-04', 'MUR', '+45.5%'), ('2026-09', 'MRNA', '+37.0%'), ('2018-08', 'AMD', '+37.0%'), ('2016-03', 'FCX', '+31.6%'), ('2024-02', 'NVDA', '+27.1%')]
+Best 3 months = 98% of total log-growth; without them $102; without best 5: $61
+Worst 5 months: [('2018-10', 'AMD', '-40.8%'), ('2026-07', 'AMAT', '-24.2%'), ('2019-05', 'QCOM', '-23.5%'), ('2018-12', 'NWL', '-22.3%'), ('2018-04', 'NKTR', '-21.9%')]
+
+Avg monthly return: pick +1.5% | avg eligible S&P stock +1.0% | SPY +1.2% | QQQ +1.6% ; median pick +1.2%
+Avg prior-month return of the picks: +37.7%; pick beat the average eligible stock in 45% of months
+Months where pick had prior-month return > +100%% (audit for data glitches/spin-offs):  [('2020-05', 'APA', '+213.8%', '-13.3%'), ('2026-02', 'SNDK', '+142.8%', '+7.7%'), ('2026-05', 'INTC', '+114.1%', '+22.8%'), ('2026-06', 'DELL', '+101.4%', '+1.0%'), ('2026-09', 'MRNA', '+156.0%', '+37.0%')]
+Most frequent picks: {'NVDA': 5, 'AMD': 5, 'FCX': 3, 'MU': 3, 'QCOM': 3, 'MRNA': 3, 'ALB': 3, 'DG': 3}
+Eligible/members coverage by year (avg): {'2016': 0.75, '2017': 0.78, '2018': 0.8, '2019': 0.84, '2020': 0.87, '2021': 0.89, '2022': 0.92, '2023': 0.94, '2024': 0.96, '2025': 0.97, '2026': 0.99}
+
+For comparison, yearly version (A, open-entry, no costs) 2016-2026 YTD: $118,777 (SNDK) / $42,161 (strict); 2016-2025: $20,000
