@@ -1,0 +1,65 @@
+
+### 2016-2026 YTD (to 2026-10-13) - 10 bps/side, buy Jan open, sell Dec close. Hypothetical backtest, not live results.
+| Portfolio ($1,000 start)            | End value   | CAGR   | Worst year   | Beat SPY   | Yearly vol   | Max DD (daily)   |
+|:------------------------------------|:------------|:-------|:-------------|:-----------|:-------------|:-----------------|
+| Top-1 (all $1,000 in #1), reading A | $1,161,915  | +92.5% | -3.2%        | 9/11       | 131%         | -56.5%           |
+| Top-1 (all $1,000 in #1), reading B | $412,430    | +74.9% | -3.2%        | 9/11       | 55%          | -50.0%           |
+| Top-10 ($100 each), reading A       | $16,179     | +29.5% | -12.4%       | 9/11       | 32%          | -38.6%           |
+| Top-10 ($100 each), reading B       | $11,425     | +25.4% | -12.4%       | 9/11       | 22%          | -38.6%           |
+| SPY $1,000                          | $4,536      | +15.1% | -18.4%       | 0/11       | 14%          |                  |
+| QQQ $1,000                          | $7,154      | +20.0% | -32.8%       | 8/11       | 23%          |                  |
+
+### 2016-2025 (10 complete years) - 10 bps/side, buy Jan open, sell Dec close. Hypothetical backtest, not live results.
+| Portfolio ($1,000 start)            | End value   | CAGR   | Worst year   | Beat SPY   | Yearly vol   | Max DD (daily)   |
+|:------------------------------------|:------------|:-------|:-------------|:-----------|:-------------|:-----------------|
+| Top-1 (all $1,000 in #1), reading A | $196,037    | +69.5% | -3.2%        | 8/10       | 57%          | -40.6%           |
+| Top-1 (all $1,000 in #1), reading B | $196,037    | +69.5% | -3.2%        | 8/10       | 57%          | -40.6%           |
+| Top-10 ($100 each), reading A       | $7,760      | +22.7% | -12.4%       | 8/10       | 22%          | -38.6%           |
+| Top-10 ($100 each), reading B       | $7,314      | +22.0% | -12.4%       | 8/10       | 21%          | -38.6%           |
+| SPY $1,000                          | $3,972      | +14.8% | -18.4%       | 0/10       | 15%          |                  |
+| QQQ $1,000                          | $5,963      | +19.5% | -32.8%       | 7/10       | 24%          |                  |
+
+### Year by year (reading A, 10 bps). Hypothetical backtest, not live results.
+| year     | Top-1 pick   | Top-1 return   | Top-10 return   | Top-10 best/worst name   | names up   | SPY    | QQQ    |
+|:---------|:-------------|:---------------|:----------------|:-------------------------|:-----------|:-------|:-------|
+| 2016     | NFLX         | +13.4%         | +18.3%          | +233.1% / -50.5%         | 5/10       | +13.9% | +9.5%  |
+| 2017     | NVDA         | +85.7%         | +24.3%          | +85.7% / -9.8%           | 7/10       | +20.9% | +31.8% |
+| 2018     | NRG          | +38.9%         | -8.1%           | +38.9% / -39.0%          | 4/10       | -4.9%  | -0.6%  |
+| 2019     | AMD          | +154.1%        | +43.8%          | +154.1% / -35.6%         | 9/10       | +33.3% | +42.0% |
+| 2020     | AMD          | +95.3%         | +45.6%          | +95.3% / -34.1%          | 9/10       | +17.7% | +47.2% |
+| 2021     | TSLA         | +46.6%         | +43.0%          | +124.2% / -20.9%         | 9/10       | +28.2% | +26.9% |
+| 2022     | DVN          | +50.3%         | -12.4%          | +50.3% / -51.0%          | 4/10       | -18.4% | -32.8% |
+| 2023     | OXY          | -3.2%          | +5.7%           | +37.3% / -20.0%          | 6/10       | +25.5% | +53.5% |
+| 2024     | NVDA         | +172.2%        | +47.3%          | +172.2% / -16.4%         | 7/10       | +25.7% | +26.7% |
+| 2025     | PLTR         | +132.8%        | +40.6%          | +132.8% / -22.8%         | 8/10       | +17.1% | +20.1% |
+| 2026 YTD | SNDK*        | +492.7%        | +108.5%         | +492.7% / -60.2%         | 8/10       | +14.2% | +20.0% |
+
+### Value of $1,000 at each year-end
+| year     | Top-1      | Top-10   | SPY    | QQQ    |
+|:---------|:-----------|:---------|:-------|:-------|
+| 2016     | $1,134     | $1,183   | $1,139 | $1,095 |
+| 2017     | $2,105     | $1,470   | $1,377 | $1,442 |
+| 2018     | $2,923     | $1,351   | $1,309 | $1,433 |
+| 2019     | $7,428     | $1,943   | $1,745 | $2,035 |
+| 2020     | $14,509    | $2,830   | $2,055 | $2,995 |
+| 2021     | $21,269    | $4,047   | $2,635 | $3,799 |
+| 2022     | $31,958    | $3,545   | $2,150 | $2,554 |
+| 2023     | $30,932    | $3,747   | $2,699 | $3,920 |
+| 2024     | $84,208    | $5,520   | $3,393 | $4,967 |
+| 2025     | $196,037   | $7,760   | $3,972 | $5,963 |
+| 2026 YTD | $1,161,915 | $16,179  | $4,536 | $7,154 |
+
+Top-10 holdings by year (* = partial prior-year history):
+  2016: NFLX, AMZN, NVDA, HRL, VRSN, SBUX, FSLR, VLO, EXPE, GOOGL
+  2017: NVDA, OKE, FCX, NEM, AMAT, DHR, PWR, MLM, HAL, CMI
+  2018: NRG, ALGN, VRTX, WYNN, BA, DHI, MU, PYPL, PHM, NVDA
+  2019: AMD, FTNT, AAP, TRIP, CMG, KEYS, HCA, ORLY, BSX, LLY
+  2020: AMD, LRCX, KLAC, TGT, CMG, IR, XRX, CPRT, AMAT, AAPL
+  2021: TSLA, ETSY, CARR*, NVDA, PYPL, ALB, AMD, FCX, CDNS, NOW
+  2022: DVN, MRNA, FTNT, F, BBWI, FANG, NVDA, NUE, IT, EXR
+  2023: OXY, CEG*, XOM, MPC, SLB, APA, VLO, HAL, FSLR, COP
+  2024: NVDA, META, RCL, BLDR, UBER, CCL, PHM, AMD, PANW, AVGO
+  2025: PLTR, VST, NVDA, GEV*, UAL, AXON, TPL, AVGO, TRGP, HWM
+  2026 YTD: SNDK*, WDC, MU, STX, HOOD, NEM, LRCX, PLTR, FIX, APP
+Top-1: best 3 years ['2026 YTD +492.7%', '2024 +172.2%', '2019 +154.1%'] = 53% of log-growth; end without them $28,336
+Top-10: best 3 years ['2026 YTD +108.5%', '2024 +47.3%', '2020 +45.6%'] = 54% of log-growth; end without them $3,617
