@@ -1,0 +1,4 @@
+data/prices.pkl
+data/download.log
+outputs/results.pkl
+__pycache__/
