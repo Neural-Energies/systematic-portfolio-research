@@ -2,6 +2,20 @@
 
 **Hypothetical backtest, not live results.** Every performance number below is a simulation on imperfect data (see "Data: read this first"). Full tables: `outputs/results_tables.md`. Code: `src/`. Re-run: `python3 -I src/01_download.py && python3 -I src/03_run_all.py && python3 -I src/04_charts_tearsheet.py`.
 
+## UPDATE: reconciliation with the post's own exhibits (supersedes the "not reproduced" wording below for the 2012 version)
+
+The post's screenshots show its year-by-year picks and returns (2012 → 2026 YTD to Oct 9). `src/06_reconcile_post.py` compares them with this data. Hypothetical backtest, not live results.
+
+* **The 2012 claim reproduces.** My own ranking picks the same stock as the post in **14 of 15 years**. Compounding the post's picks on my prices gives **$177,161** (Dec-31-close entry, the post's convention) or **$174,561** (Jan-open entry) vs the post's **$176,114**; SPY **$800** vs the post's $800. The "11 of 15 years ahead" also holds (lagged only in 2013, 2014, 2016, 2023). My earlier $50,730 was a **data miss on my side, not a flaw in the post's arithmetic**: (1) 2012 pick **COG** (Cabot Oil & Gas, now CTRA) is no longer served by Yahoo, so my run picked ISRG (+7%) instead of COG (+31% per the post, which I cannot verify with Yahoo data); (2) the 2026 pick **SNDK** has only a partial 2025 (listed Feb 13, 2025), so my full-lookback rule skipped it (WDC, +131%).
+* **What the headline hides:**
+  * **The 2026 pick is a partial-year ranking.** SNDK's "2025 return" (+559%) runs only from its Feb-2025 spin-off listing. A strict full-prior-year rule picks WDC (+131% YTD), and the 2012 total falls from **$177,161 to about $61,377**. SNDK alone is ~65% of the headline.
+  * **2026 is an open, unrealised 9-month position (+566%).** Through 12/2025 the same strategy is **$26,586** (SPY ~$683).
+  * **Concentration:** the best 3 years (2026 SNDK, 2024 NVDA, 2019 AMD) are 51% of log-growth; without them $100 ends at **$3,945**.
+  * **Start date:** the post shows 2012 and 1997 starts. My 1997-start tests give a CAGR of -14.6% to +15.7% depending on the start month, so the result is very start-date dependent.
+* **Last 10 years only (2017–2026, post's picks):** $116,189 (Dec-31-close entry) / $113,993 (Jan-open) vs SPY ~$400. Through 2025 only: **$17,436 / $17,609**. With a full-prior-year rule for 2026 (WDC) it is about **$40,300** (Dec-31-close entry).
+* **The 1997 and 35%-stop versions cannot be verified with yfinance.** The post says it hand-adjusted delisted names (Dynegy's 2000 gain, Reebok's 2001 return, AOL excluded) and used **price returns before 2012**; stops were filled **exactly at the stop price intraday** (it notes gaps would make real exits worse), versus next-open fills here. My 1997-sample numbers ($3,763 / $36,157) therefore reflect a Yahoo gap that is 35–66% missing before 2012, and are not a refutation. Notably, my stop years 2000 (QCOM), 2002 (NVDA), 2008 (NOV) and 2011 (NFLX) coincide with the post's four stop years (2000, 2002, 2008, 2011); the extra hits in my run (2001 EOG and 2009 HRB) fall in years where the post's picks were delisted names Yahoo does not carry.
+* **Revised verdict on "does it replicate":** the 2012 numbers are arithmetically sound and reproducible. The skeptical points are about *robustness* (partial-year ranking in the final pick, concentration in a few years, unrealised YTD, no tradeable-at-scale or start-date test, intraday stop fills), not about a miscalculation.
+
 ## Data: read this first
 
 | Item | What was used | Consequence |
